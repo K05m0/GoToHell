@@ -21,6 +21,9 @@ public class PlayerMovement : MonoBehaviour
     [SerializeField] private float DashForce;
     [SerializeField] private float Velocity;
 
+    [SerializeField] private float wallride;
+
+    
     public GameObject bullet;
     public Transform bulletTransform;
     public bool canFire;
@@ -42,6 +45,15 @@ public class PlayerMovement : MonoBehaviour
 
     private void Update()
     {
+
+        if(transform.position.y < -200)
+        {
+            transform.Translate(0,170,0);
+            rb.AddForce(Vector3.down * 2);
+        }
+
+
+
         if (!canFire)
         {
             timer += Time.deltaTime;
@@ -51,6 +63,9 @@ public class PlayerMovement : MonoBehaviour
                 timer = 0;
             }
         }
+
+    
+
 
         if (Input.GetMouseButton(0) && canFire)
         {
@@ -114,7 +129,14 @@ public class PlayerMovement : MonoBehaviour
         rb.AddForce(jumpVector);
         
     }
+    void OnTriggerEnter(Collider collision)
+    {
+        if (collision.gameObject.tag == "floor")
+        {
+            rb.velocity = Vector3.down * wallride;
+        }
+    }
 
-    
 
-}
+
+    }

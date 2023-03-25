@@ -27,5 +27,13 @@ public class CamFollowsPlayer : MonoBehaviour
 
         transform.position = Vector3.SmoothDamp(transform.position, targetPosition, ref _currentVelocity, smoothTime);
     }
+
+    private void Update()
+    {
+        if (target.transform.position.y < -200)
+        {
+            transform.Translate(0, 170, 0);
+        }
+    }
 }
 
