@@ -12,7 +12,7 @@ public class PlayerMovement : MonoBehaviour
     private float horizontal;
 
 
-    private bool grounded = false;
+    
     [SerializeField] private Transform PlayerCamera;
     [SerializeField] private Rigidbody PlayerBody;
     [SerializeField] private float Speed;
