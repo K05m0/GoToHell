@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using Unity.VisualScripting;
 using UnityEngine;
 
-public class SpawnObstacles : MonoBehaviour
+public class SpawnObstacles : PlayerMovement
 {
     public float startDistance = 10;
     public float yDistance = 5;
@@ -11,7 +11,7 @@ public class SpawnObstacles : MonoBehaviour
     public float maxSpread = 10;
     public float spawnTreshold = -10;
     private float yPosition;
-    private float lastYPosition;
+    
 
 
     public Transform playerTransform;
@@ -31,6 +31,8 @@ public class SpawnObstacles : MonoBehaviour
         if (playerTransform.position.y < spawnTreshold)
         {
             Debug.Log("1");
+            Debug.Log("lastYPosition :" + lastYPosition + " playerTransform.position.y :" + playerTransform.position.y + " yDistance :" + yDistance);
+            
             if (lastYPosition - playerTransform.position.y > yDistance)
             {
                 Debug.Log("2");

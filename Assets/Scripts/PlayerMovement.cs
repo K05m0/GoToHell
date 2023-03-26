@@ -10,9 +10,10 @@ public class PlayerMovement : MonoBehaviour
     public float maxSpeed;
     public Rigidbody rb;
     private float horizontal;
+    public float lastYPosition;
 
 
-    
+
     [SerializeField] private Transform PlayerCamera;
     [SerializeField] private Rigidbody PlayerBody;
     [SerializeField] private float Speed;
@@ -50,6 +51,9 @@ public class PlayerMovement : MonoBehaviour
         {
             transform.Translate(0,170,0);
             rb.AddForce(Vector3.down * 2);
+            lastYPosition = transform.position.y;
+            Debug.Log("lastYPosition PlayerMovement : " + lastYPosition);
+
         }
 
 
