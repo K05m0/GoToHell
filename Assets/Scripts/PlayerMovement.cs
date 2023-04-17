@@ -1,9 +1,11 @@
 using System.Collections;
 using System.Collections.Generic;
+using UnityEditor.Rendering;
 using UnityEngine;
 
 public class PlayerMovement : MonoBehaviour
 {
+    public Camera camera2;
     public float tapSpeed = 0.5f;
     private float lastTapTime = 0;
 
@@ -11,7 +13,7 @@ public class PlayerMovement : MonoBehaviour
     public Rigidbody rb;
     private float horizontal;
     public float lastYPosition;
-
+    public Canvas canvas;
 
 
     [SerializeField] private Transform PlayerCamera;
@@ -44,15 +46,40 @@ public class PlayerMovement : MonoBehaviour
     }
 
 
-    private void Update()
+    void Update()
     {
+        
 
-        if(transform.position.y < -200)
+
+
+        Vector2 positionOnScreen = (Vector2)Camera.main.WorldToViewportPoint(transform.position);
+        
+
+        Vector2 mouseOnScreen = (Vector2)camera2.ScreenToViewportPoint(Input.mousePosition);
+        Vector2 mouseOnScreenScaled = positionOnScreen - mouseOnScreen;
+
+        if (Input.GetKeyDown(KeyCode.Q))
+        {
+            if ((Time.time - lastTapTime) < tapSpeed)
+            {
+                //Debug.Log("DoubleTap Q");
+                PlayerBody.AddForce(-mouseOnScreenScaled * DashForce, ForceMode.Impulse);
+            }
+            lastTapTime = Time.time;
+        }
+
+        Debug.DrawLine(positionOnScreen, mouseOnScreen, Color.green);
+        Debug.DrawLine(-positionOnScreen, -mouseOnScreen, Color.red);
+        Debug.DrawLine(-positionOnScreen, -mouseOnScreenScaled, Color.white);
+        Debug.Log("mouseOnScreen :" + mouseOnScreen + ", Scaled: " + mouseOnScreenScaled  + " positionOnScreen :" + positionOnScreen);
+        Debug.Log("ScaleFactor = " + canvas.scaleFactor);
+
+        if (transform.position.y < -200)
         {
             transform.Translate(0,170,0);
             rb.AddForce(Vector3.down * 2);
             lastYPosition = transform.position.y;
-            Debug.Log("lastYPosition PlayerMovement : " + lastYPosition);
+           // Debug.Log("lastYPosition PlayerMovement : " + lastYPosition);
 
         }
 
@@ -96,25 +123,10 @@ public class PlayerMovement : MonoBehaviour
 
 
         
-        if (Input.GetKeyDown(KeyCode.A))
-        {
-            if((Time.time - lastTapTime) < tapSpeed)
-            {
-                //Debug.Log("DoubleTap A");
-                PlayerBody.AddForce(Vector3.left * DashForce, ForceMode.Impulse);
-            }
-            lastTapTime = Time.time;
-        }
+       
 
-        if (Input.GetKeyDown(KeyCode.D))
-        {
-            if ((Time.time - lastTapTime) < tapSpeed)
-            {
-                //Debug.Log("DoubleTap A");
-                PlayerBody.AddForce(Vector3.right * DashForce, ForceMode.Impulse);
-            }
-            lastTapTime = Time.time;
-        }
+        
+        
 
         //Debug.Log(rb.velocity.magnitude);
         if (rb.velocity.magnitude > maxSpeed)

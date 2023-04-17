@@ -13,8 +13,8 @@ public class shooting : MonoBehaviour
 
         Vector2 positionOnScreen = Camera.main.WorldToViewportPoint(transform.position);
 
-        Vector2 mouseOnScreen = (Vector2)camera2.ScreenToViewportPoint(Input.mousePosition);
-        Vector2 mouseOnScreenScaled = mouseOnScreen;
+        Vector2 mouseOnScreenScaled = (Vector2)camera2.ScreenToViewportPoint(Input.mousePosition);
+        
 
         float angle = AngleBetweenTwoPoints(-positionOnScreen, -mouseOnScreenScaled);
 

@@ -28,10 +28,12 @@ public class SpawnObstacles : PlayerMovement
 
     void Update()
     {
+        // Ta Teleportacja na góre odbywaæ sie bedzie przy sklepikarzu, bedzie ³atwiej 
         if (playerTransform.position.y < spawnTreshold)
         {
             Debug.Log("1");
             Debug.Log("lastYPosition :" + lastYPosition + " playerTransform.position.y :" + playerTransform.position.y + " yDistance :" + yDistance);
+            
             
             if (lastYPosition - playerTransform.position.y > yDistance)
             {
