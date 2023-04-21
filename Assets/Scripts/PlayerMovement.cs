@@ -105,12 +105,7 @@ public class PlayerMovement : MonoBehaviour
         }
 
 
-
-
-
-
         horizontal = Input.GetAxis("Horizontal");
-
         rb.velocity = new Vector2(horizontal * Speed, rb.velocity.y);
 
 
