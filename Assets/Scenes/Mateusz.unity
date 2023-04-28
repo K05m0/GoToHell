@@ -299,7 +299,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4f231c4fb786f3946a6b90b886c48677, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_SendPointerHoverToParent: 1
   m_HorizontalAxis: Horizontal
   m_VerticalAxis: Vertical
   m_SubmitButton: Submit
@@ -659,15 +658,17 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9159fafe03b3e4e428cecd9ed9760898, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  camera2: {fileID: 812493332}
   tapSpeed: 0.5
   maxSpeed: 10
   rb: {fileID: 571873394}
   lastYPosition: 0
+  canvas: {fileID: 1513084020}
   PlayerCamera: {fileID: 451492966}
   PlayerBody: {fileID: 571873394}
   Speed: 10
   JumpForce: 500
-  DashForce: 200
+  DashForce: 750
   Velocity: 10
   wallride: 0
   bullet: {fileID: 7381454426214437832, guid: f429e0c0b9c305640afb15f4f94cbc8d, type: 3}
@@ -881,10 +882,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 962e4a7578af39145be6129d30f59b04, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  camera2: {fileID: 0}
   tapSpeed: 0.5
   maxSpeed: 0
   rb: {fileID: 0}
   lastYPosition: 0
+  canvas: {fileID: 0}
   PlayerCamera: {fileID: 0}
   PlayerBody: {fileID: 0}
   Speed: 0
@@ -998,7 +1001,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 738212773}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -1.66, y: -50.49, z: -0.55}
+  m_LocalPosition: {x: -34.62, y: -50.49, z: -0.55}
   m_LocalScale: {x: 9.82751, y: 3.1832, z: 3.1832}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -1037,10 +1040,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 962e4a7578af39145be6129d30f59b04, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  camera2: {fileID: 0}
   tapSpeed: 0.5
   maxSpeed: 0
   rb: {fileID: 0}
   lastYPosition: 0
+  canvas: {fileID: 0}
   PlayerCamera: {fileID: 0}
   PlayerBody: {fileID: 0}
   Speed: 0
@@ -1401,10 +1406,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 962e4a7578af39145be6129d30f59b04, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  camera2: {fileID: 0}
   tapSpeed: 0.5
   maxSpeed: 0
   rb: {fileID: 0}
   lastYPosition: 0
+  canvas: {fileID: 0}
   PlayerCamera: {fileID: 0}
   PlayerBody: {fileID: 0}
   Speed: 0
@@ -1591,7 +1598,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1297502259}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 7.218571, y: -25.147745, z: -0.55}
+  m_LocalPosition: {x: -25.741428, y: -25.147745, z: -0.55}
   m_LocalScale: {x: 13.099504, y: 3.1832, z: 3.1832}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -1842,10 +1849,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 962e4a7578af39145be6129d30f59b04, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  camera2: {fileID: 0}
   tapSpeed: 0.5
   maxSpeed: 0
   rb: {fileID: 0}
   lastYPosition: 0
+  canvas: {fileID: 0}
   PlayerCamera: {fileID: 0}
   PlayerBody: {fileID: 0}
   Speed: 0
@@ -2032,7 +2041,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1402983230}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -15.03, y: -50.49, z: -0.55}
+  m_LocalPosition: {x: -47.989998, y: -50.49, z: -0.55}
   m_LocalScale: {x: 13.099504, y: 3.1832, z: 3.1832}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -2676,10 +2685,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 962e4a7578af39145be6129d30f59b04, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  camera2: {fileID: 0}
   tapSpeed: 0.5
   maxSpeed: 0
   rb: {fileID: 0}
   lastYPosition: 0
+  canvas: {fileID: 0}
   PlayerCamera: {fileID: 0}
   PlayerBody: {fileID: 0}
   Speed: 0

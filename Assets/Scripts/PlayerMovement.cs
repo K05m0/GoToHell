@@ -14,6 +14,8 @@ public class PlayerMovement : MonoBehaviour
     private float horizontal;
     public float lastYPosition;
     public Canvas canvas;
+    public float Stamina;
+    public float DashCost;
 
 
     [SerializeField] private Transform PlayerCamera;
@@ -37,6 +39,7 @@ public class PlayerMovement : MonoBehaviour
     private void Start()
     {
         lastTapTime = 0;
+        InvokeRepeating("addStamina", 2.0f, 0.3f);
     }
 
     private void Awake()
@@ -44,10 +47,16 @@ public class PlayerMovement : MonoBehaviour
         rb = GetComponent<Rigidbody>();
 
     }
-
+    private void addStamina()
+    {
+        Stamina++;
+      //  Debug.Log("Stamina Added");
+    }
 
     void Update()
     {
+        
+
         
 
 
@@ -62,8 +71,18 @@ public class PlayerMovement : MonoBehaviour
         {
             if ((Time.time - lastTapTime) < tapSpeed)
             {
-                //Debug.Log("DoubleTap Q");
-                PlayerBody.AddForce(-mouseOnScreenScaled * DashForce, ForceMode.Impulse);
+                if (Stamina > (DashCost - 1))
+                {
+                    //Debug.Log("DoubleTap Q");
+                    PlayerBody.AddForce(-mouseOnScreenScaled * DashForce, ForceMode.Impulse);
+                    Stamina = Stamina - DashCost;
+                    Debug.Log(DashCost);
+                    Debug.Log(Stamina);
+                }
+                else
+                {
+                    Debug.Log("Out Of Stamina");
+                }
             }
             lastTapTime = Time.time;
         }
@@ -71,8 +90,8 @@ public class PlayerMovement : MonoBehaviour
         Debug.DrawLine(positionOnScreen, mouseOnScreen, Color.green);
         Debug.DrawLine(-positionOnScreen, -mouseOnScreen, Color.red);
         Debug.DrawLine(-positionOnScreen, -mouseOnScreenScaled, Color.white);
-        Debug.Log("mouseOnScreen :" + mouseOnScreen + ", Scaled: " + mouseOnScreenScaled  + " positionOnScreen :" + positionOnScreen);
-        Debug.Log("ScaleFactor = " + canvas.scaleFactor);
+      //  Debug.Log("mouseOnScreen :" + mouseOnScreen + ", Scaled: " + mouseOnScreenScaled  + " positionOnScreen :" + positionOnScreen);
+      //  Debug.Log("ScaleFactor = " + canvas.scaleFactor);
 
         if (transform.position.y < -200)
         {
