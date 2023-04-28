@@ -664,6 +664,8 @@ MonoBehaviour:
   rb: {fileID: 571873394}
   lastYPosition: 0
   canvas: {fileID: 1513084020}
+  Stamina: 100
+  DashCost: 30
   PlayerCamera: {fileID: 451492966}
   PlayerBody: {fileID: 571873394}
   Speed: 10
@@ -888,6 +890,8 @@ MonoBehaviour:
   rb: {fileID: 0}
   lastYPosition: 0
   canvas: {fileID: 0}
+  Stamina: 0
+  DashCost: 0
   PlayerCamera: {fileID: 0}
   PlayerBody: {fileID: 0}
   Speed: 0
@@ -1046,6 +1050,8 @@ MonoBehaviour:
   rb: {fileID: 0}
   lastYPosition: 0
   canvas: {fileID: 0}
+  Stamina: 0
+  DashCost: 0
   PlayerCamera: {fileID: 0}
   PlayerBody: {fileID: 0}
   Speed: 0
@@ -1412,6 +1418,8 @@ MonoBehaviour:
   rb: {fileID: 0}
   lastYPosition: 0
   canvas: {fileID: 0}
+  Stamina: 0
+  DashCost: 0
   PlayerCamera: {fileID: 0}
   PlayerBody: {fileID: 0}
   Speed: 0
@@ -1855,6 +1863,8 @@ MonoBehaviour:
   rb: {fileID: 0}
   lastYPosition: 0
   canvas: {fileID: 0}
+  Stamina: 0
+  DashCost: 0
   PlayerCamera: {fileID: 0}
   PlayerBody: {fileID: 0}
   Speed: 0
@@ -2691,6 +2701,8 @@ MonoBehaviour:
   rb: {fileID: 0}
   lastYPosition: 0
   canvas: {fileID: 0}
+  Stamina: 0
+  DashCost: 0
   PlayerCamera: {fileID: 0}
   PlayerBody: {fileID: 0}
   Speed: 0
