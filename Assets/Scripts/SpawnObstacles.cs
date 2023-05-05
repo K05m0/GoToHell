@@ -31,13 +31,13 @@ public class SpawnObstacles : PlayerMovement
         // Ta Teleportacja na góre odbywaæ sie bedzie przy sklepikarzu, bedzie ³atwiej 
         if (playerTransform.position.y < spawnTreshold)
         {
-            Debug.Log("1");
-            Debug.Log("lastYPosition :" + lastYPosition + " playerTransform.position.y :" + playerTransform.position.y + " yDistance :" + yDistance);
+            //Debug.Log("1");
+            //Debug.Log("lastYPosition :" + lastYPosition + " playerTransform.position.y :" + playerTransform.position.y + " yDistance :" + yDistance);
             
             
             if (lastYPosition - playerTransform.position.y > yDistance)
             {
-                Debug.Log("2");
+                //Debug.Log("2");
                 float lanePos = Random.Range(-7, 7);
                 ySpread = Random.Range(minSpread, maxSpread);
 

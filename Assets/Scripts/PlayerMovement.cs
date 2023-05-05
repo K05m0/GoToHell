@@ -2,8 +2,10 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEditor.Rendering;
 using UnityEngine;
+using UnityEngine.UI;
 
-public class PlayerMovement : MonoBehaviour
+
+public class PlayerMovement : StaminaBar
 {
     public Camera camera2;
     public float tapSpeed = 0.5f;
@@ -14,8 +16,8 @@ public class PlayerMovement : MonoBehaviour
     private float horizontal;
     public float lastYPosition;
     public Canvas canvas;
-    public float Stamina;
-    public float DashCost;
+    public int DashCost;
+    public int JumpCost;
 
 
     [SerializeField] private Transform PlayerCamera;
@@ -34,12 +36,12 @@ public class PlayerMovement : MonoBehaviour
     public bool canFire;
     private float timer;
     public float timeBetweenFiring;
+   
 
-    
+
     private void Start()
     {
         lastTapTime = 0;
-        InvokeRepeating("addStamina", 2.0f, 0.3f);
     }
 
     private void Awake()
@@ -47,11 +49,7 @@ public class PlayerMovement : MonoBehaviour
         rb = GetComponent<Rigidbody>();
 
     }
-    private void addStamina()
-    {
-        Stamina++;
-      //  Debug.Log("Stamina Added");
-    }
+  
 
     void Update()
     {
@@ -69,20 +67,14 @@ public class PlayerMovement : MonoBehaviour
 
         if (Input.GetKeyDown(KeyCode.Q))
         {
-            if ((Time.time - lastTapTime) < tapSpeed)
+            if ((Time.time - lastTapTime) < tapSpeed && staminaBar.value >= DashCost)
             {
-                if (Stamina > (DashCost - 1))
-                {
+               
                     //Debug.Log("DoubleTap Q");
                     PlayerBody.AddForce(-mouseOnScreenScaled * DashForce, ForceMode.Impulse);
-                    Stamina = Stamina - DashCost;
-                    Debug.Log(DashCost);
-                    Debug.Log(Stamina);
-                }
-                else
-                {
-                    Debug.Log("Out Of Stamina");
-                }
+                    StaminaBar.instance.UseStamina(DashCost);
+              
+               
             }
             lastTapTime = Time.time;
         }
@@ -129,7 +121,7 @@ public class PlayerMovement : MonoBehaviour
 
 
 
-        if (Input.GetKeyDown(KeyCode.Space))
+        if (Input.GetKeyDown(KeyCode.Space) && staminaBar.value >= JumpCost)
         {
             PlayerJump();
         }
@@ -157,7 +149,9 @@ public class PlayerMovement : MonoBehaviour
     {
         Vector3 jumpVector = new Vector3(0, JumpForce, 0);
         rb.AddForce(jumpVector);
-        
+        StaminaBar.instance.UseStamina(JumpCost);
+
+
     }
     void OnTriggerEnter(Collider collision)
     {
