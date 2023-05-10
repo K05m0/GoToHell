@@ -11,14 +11,12 @@ public class HeartManager1 : MonoBehaviour
 
     public Sprite fullHeart;
     public Sprite emptyHeart;
-
+ 
     
-        
-       
     
     void Update()
     {
-        
+        /*
         foreach (Image img in hearts)
         {
             img.sprite = emptyHeart;
@@ -28,6 +26,8 @@ public class HeartManager1 : MonoBehaviour
 
             hearts[i].sprite = fullHeart;
         }
+        */
+        
 
     }
 }

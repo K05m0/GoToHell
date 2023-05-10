@@ -21,6 +21,7 @@ public class GameEvent : ScriptableObject
             return;
         if (gameEventListeners.Contains(gameEventListener))
             return;
+        gameEventListeners.Add(gameEventListener);
     }
     public void UnregisterListener(IGameEventListener gameEventListener)
     {
