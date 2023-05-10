@@ -786,30 +786,20 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9159fafe03b3e4e428cecd9ed9760898, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-<<<<<<< HEAD
   staminaBar: {fileID: 291994929}
-=======
->>>>>>> health
   camera2: {fileID: 812493332}
   tapSpeed: 0.5
   maxSpeed: 10
   rb: {fileID: 571873394}
   lastYPosition: 0
   canvas: {fileID: 1513084020}
-<<<<<<< HEAD
   DashCost: 25
   JumpCost: 10
-=======
->>>>>>> health
   PlayerCamera: {fileID: 451492966}
   PlayerBody: {fileID: 571873394}
   Speed: 10
   JumpForce: 500
-<<<<<<< HEAD
   DashForce: 750
-=======
-  DashForce: 400
->>>>>>> health
   Velocity: 10
   wallride: 10
   bullet: {fileID: 7381454426214437832, guid: f429e0c0b9c305640afb15f4f94cbc8d, type: 3}
@@ -1023,26 +1013,18 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 962e4a7578af39145be6129d30f59b04, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-<<<<<<< HEAD
   staminaBar: {fileID: 0}
-=======
->>>>>>> health
   camera2: {fileID: 0}
   tapSpeed: 0.5
   maxSpeed: 0
   rb: {fileID: 0}
   lastYPosition: 0
   canvas: {fileID: 0}
-<<<<<<< HEAD
-  DashCost: 0
-  JumpCost: 0
-=======
->>>>>>> health
   PlayerCamera: {fileID: 0}
   PlayerBody: {fileID: 0}
   Speed: 0
-  JumpForce: 0
-  DashForce: 0
+  DashCost: 0
+  JumpCost: 0
   Velocity: 0
   wallride: 0
   bullet: {fileID: 0}
@@ -1266,21 +1248,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 962e4a7578af39145be6129d30f59b04, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-<<<<<<< HEAD
   staminaBar: {fileID: 0}
-=======
->>>>>>> health
   camera2: {fileID: 0}
   tapSpeed: 0.5
   maxSpeed: 0
   rb: {fileID: 0}
   lastYPosition: 0
   canvas: {fileID: 0}
-<<<<<<< HEAD
-  DashCost: 0
-  JumpCost: 0
-=======
->>>>>>> health
   PlayerCamera: {fileID: 0}
   PlayerBody: {fileID: 0}
   Speed: 0
@@ -1717,21 +1691,15 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 962e4a7578af39145be6129d30f59b04, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-<<<<<<< HEAD
   staminaBar: {fileID: 0}
-=======
->>>>>>> health
   camera2: {fileID: 0}
   tapSpeed: 0.5
   maxSpeed: 0
   rb: {fileID: 0}
   lastYPosition: 0
   canvas: {fileID: 0}
-<<<<<<< HEAD
   DashCost: 0
   JumpCost: 0
-=======
->>>>>>> health
   PlayerCamera: {fileID: 0}
   PlayerBody: {fileID: 0}
   Speed: 0
@@ -2169,21 +2137,15 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 962e4a7578af39145be6129d30f59b04, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-<<<<<<< HEAD
   staminaBar: {fileID: 0}
-=======
->>>>>>> health
   camera2: {fileID: 0}
   tapSpeed: 0.5
   maxSpeed: 0
   rb: {fileID: 0}
   lastYPosition: 0
   canvas: {fileID: 0}
-<<<<<<< HEAD
   DashCost: 0
   JumpCost: 0
-=======
->>>>>>> health
   PlayerCamera: {fileID: 0}
   PlayerBody: {fileID: 0}
   Speed: 0
@@ -3015,21 +2977,15 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 962e4a7578af39145be6129d30f59b04, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-<<<<<<< HEAD
   staminaBar: {fileID: 0}
-=======
->>>>>>> health
   camera2: {fileID: 0}
   tapSpeed: 0.5
   maxSpeed: 0
   rb: {fileID: 0}
   lastYPosition: 0
   canvas: {fileID: 0}
-<<<<<<< HEAD
   DashCost: 0
   JumpCost: 0
-=======
->>>>>>> health
   PlayerCamera: {fileID: 0}
   PlayerBody: {fileID: 0}
   Speed: 0
