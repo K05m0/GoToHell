@@ -1,3 +1,4 @@
+using DG.Tweening;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEditor.Rendering;
@@ -18,6 +19,7 @@ public class PlayerMovement : StaminaBar
     public Canvas canvas;
     public int DashCost;
     public int JumpCost;
+    public float HP = 3;
 
 
     [SerializeField] private Transform PlayerCamera;
@@ -42,6 +44,7 @@ public class PlayerMovement : StaminaBar
     private void Start()
     {
         lastTapTime = 0;
+        camera2 = Camera.main;
     }
 
     private void Awake()
@@ -162,5 +165,8 @@ public class PlayerMovement : StaminaBar
     }
 
 
-
+    public void Demage()
+    {
+        camera2.transform.DOShakePosition(1f);
+    }
     }
