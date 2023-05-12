@@ -34,7 +34,11 @@ public class jump : MonoBehaviour
     }
     private void OnCollisionEnter(Collision collision)
     {
-        if (collision.gameObject.tag == "Floor")
+       
+        if (collision.gameObject.tag == "floor")
+        {
             jumpingCount = 0;
+           
+        }
     }
 }

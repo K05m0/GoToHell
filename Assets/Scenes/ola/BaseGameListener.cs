@@ -4,6 +4,8 @@ using UnityEngine;
 using UnityEngine.Events;
 using TMPro;
 using UnityEngine.UI;
+using UnityEngine.SceneManagement;
+
 
 public class BaseGameListener : MonoBehaviour, IGameEventListener
 {
@@ -11,13 +13,15 @@ public class BaseGameListener : MonoBehaviour, IGameEventListener
     //public UnityEvent response;
     public playerhealth hp;
     public TextMeshProUGUI textMeshProUGUI;
-
+    public int points=0;
 
 
     public Image[] hearts;
     public Sprite fullHeart;
     public Sprite emptyHeart;
+    bool isGameOver = false;
 
+    [SerializeField] private GameObject gameOverPanel;
     private void OnEnable()
     {
         gameEventToSubscribe.RegisterListener(this);
@@ -43,21 +47,58 @@ public class BaseGameListener : MonoBehaviour, IGameEventListener
     private void Awake()
     {
         //textMeshProUGUI = GetComponent<TextMeshProUGUI>();
-        textMeshProUGUI.text = hp.value.ToString();
+        // textMeshProUGUI.text = hp.value.ToString();
 
+        gameOverPanel.SetActive(false);
         foreach (Image img in hearts)
         {
             img.sprite = fullHeart;
         }
+        hp.value=3;
+        textMeshProUGUI.text = points.ToString();
+    }
+    private void OnCollisionExit(Collision collision)
+    {
+
+        if (collision.gameObject.tag == "floor")
+        {
+            
+            StartCoroutine(countpoints());
+        }
+    }
+    private IEnumerator countpoints()
+    {
+        Debug.Log("makaron");
+        yield return new WaitForSecondsRealtime(1f);
+        points++;
+        textMeshProUGUI.text = points.ToString();
     }
     private IEnumerator MakeRedForOneSecond()
     {
+        /*
         textMeshProUGUI.color = Color.red;
         textMeshProUGUI.text = hp.value.ToString();
         yield return new WaitForSecondsRealtime(1f);
         textMeshProUGUI.color =Color.white;
+        */
+        
+        if (hp.value <1)
+        {
+            yield return new WaitForSecondsRealtime(1f);
+            gameOverPanel.SetActive(true);
+            isGameOver = true;
+        }
+       
     }
-    
-    
+   
+    private void OnMouseDown()
+    {
+        if (isGameOver)
+        {
+            gameOverPanel.SetActive(false);
+          
+            SceneManager.LoadScene(0);
+        }
+    }
 
 }
