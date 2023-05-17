@@ -702,6 +702,7 @@ GameObject:
   - component: {fileID: 571873396}
   - component: {fileID: 571873395}
   - component: {fileID: 571873394}
+  - component: {fileID: 571873399}
   - component: {fileID: 571873393}
   - component: {fileID: 571873392}
   m_Layer: 0
@@ -863,6 +864,26 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &571873399
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 571873391}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0917260d6f4d714478677b88c6c9e5a9, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  gameEventToSubscribe: {fileID: 0}
+  hp: {fileID: 0}
+  textMeshProUGUI: {fileID: 0}
+  points: 0
+  hearts: []
+  fullHeart: {fileID: 0}
+  emptyHeart: {fileID: 0}
+  gameOverPanel: {fileID: 0}
 --- !u!1 &617085964
 GameObject:
   m_ObjectHideFlags: 0
