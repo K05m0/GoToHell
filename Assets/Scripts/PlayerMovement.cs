@@ -38,7 +38,12 @@ public class PlayerMovement : StaminaBar
     public bool canFire;
     private float timer;
     public float timeBetweenFiring;
-   
+
+
+    public GameEvent onPlayerdamage;
+    public playerhealth Hp;
+    public GameEvent onPlayerdeath;
+
 
 
     private void Start()
@@ -129,14 +134,6 @@ public class PlayerMovement : StaminaBar
             PlayerJump();
         }
 
-
-
-        
-       
-
-        
-        
-
         //Debug.Log(rb.velocity.magnitude);
         if (rb.velocity.magnitude > maxSpeed)
         {
@@ -162,11 +159,24 @@ public class PlayerMovement : StaminaBar
         {
             rb.velocity = Vector3.down * wallride;
         }
+
+
+        if (collision.gameObject.tag == "enemy")
+        {
+            Demage();
+        }
+
+
+
+
     }
 
 
     public void Demage()
     {
+        Hp.value -= 1;
+        if (onPlayerdamage != null)
+            onPlayerdamage.Fire();
         camera2.transform.DOShakePosition(1f);
     }
     }

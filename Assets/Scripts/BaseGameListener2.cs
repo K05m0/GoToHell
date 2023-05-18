@@ -14,7 +14,7 @@ public class BaseGameListener2 : MonoBehaviour, IGameEventListener
     public playerhealth hp;
     public TextMeshProUGUI textMeshProUGUI;
     public int points = 0;
-
+    
 
     public Image[] hearts;
     public Sprite fullHeart;
@@ -53,6 +53,7 @@ public class BaseGameListener2 : MonoBehaviour, IGameEventListener
         foreach (Image img in hearts)
         {
             img.sprite = fullHeart;
+
         }
         hp.value = 3;
         textMeshProUGUI.text = points.ToString();
@@ -68,7 +69,6 @@ public class BaseGameListener2 : MonoBehaviour, IGameEventListener
     }
     private IEnumerator countpoints()
     {
-        Debug.Log("makaron");
         yield return new WaitForSecondsRealtime(1f);
         points++;
         textMeshProUGUI.text = points.ToString();
