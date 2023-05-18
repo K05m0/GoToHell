@@ -79,19 +79,21 @@ public class PlayerMovement : StaminaBar
             {
                
                     //Debug.Log("DoubleTap Q");
-                    PlayerBody.AddForce(-mouseOnScreenScaled * DashForce, ForceMode.Impulse);
-                    StaminaBar.instance.UseStamina(DashCost);
+                   // PlayerBody.AddForce(-mouseOnScreenScaled * DashForce, ForceMode.Impulse);
+                PlayerBody.AddRelativeForce((GameObject.FindGameObjectWithTag("BulletTransform").transform.position - transform.position) * DashForce, ForceMode.VelocityChange);
+                StaminaBar.instance.UseStamina(DashCost);
               
                
             }
             lastTapTime = Time.time;
         }
-
+        /*
         Debug.DrawLine(positionOnScreen, mouseOnScreen, Color.green);
         Debug.DrawLine(-positionOnScreen, -mouseOnScreen, Color.red);
         Debug.DrawLine(-positionOnScreen, -mouseOnScreenScaled, Color.white);
-      //  Debug.Log("mouseOnScreen :" + mouseOnScreen + ", Scaled: " + mouseOnScreenScaled  + " positionOnScreen :" + positionOnScreen);
-      //  Debug.Log("ScaleFactor = " + canvas.scaleFactor);
+        Debug.DrawLine(-mouseOnScreenScaled, new Vector3(0, 0), Color.black); */
+        //  Debug.Log("mouseOnScreen :" + mouseOnScreen + ", Scaled: " + mouseOnScreenScaled  + " positionOnScreen :" + positionOnScreen);
+        //  Debug.Log("ScaleFactor = " + canvas.scaleFactor);
 
         if (transform.position.y < -200)
         {
