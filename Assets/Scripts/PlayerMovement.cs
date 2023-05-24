@@ -95,14 +95,14 @@ public class PlayerMovement : StaminaBar
         //  Debug.Log("mouseOnScreen :" + mouseOnScreen + ", Scaled: " + mouseOnScreenScaled  + " positionOnScreen :" + positionOnScreen);
         //  Debug.Log("ScaleFactor = " + canvas.scaleFactor);
 
-        if (transform.position.y < -200)
-        {
-            transform.Translate(0,170,0);
-            rb.AddForce(Vector3.down * 2);
-            lastYPosition = transform.position.y;
-           // Debug.Log("lastYPosition PlayerMovement : " + lastYPosition);
+        //if (transform.position.y < -200)
+        //{
+        //    transform.Translate(0, 170, 0);
+        //    rb.AddForce(Vector3.down * 2);
+        //    lastYPosition = transform.position.y;
+        //    // Debug.Log("lastYPosition PlayerMovement : " + lastYPosition);
 
-        }
+        //}
 
 
 

@@ -17,12 +17,13 @@ public class Barrier : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        float distance = Vector3.Distance(transform.position, Player.transform.position); 
+        float distance = Vector3.Distance(transform.position, Player.transform.position);
 
-        if (distance > 40)
-        {
-            Destroy(gameObject);
-        } 
+        //if (distance > 40)
+        //{
+        //    Destroy(gameObject);
+        //   idk ale wywala errory tak¿e zostaje w //
+        //}
 
 
         if (health <= 0)

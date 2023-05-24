@@ -22,6 +22,16 @@ public class BaseGameListener2 : MonoBehaviour, IGameEventListener
     bool isGameOver = false;
 
     [SerializeField] private GameObject gameOverPanel;
+    private void Update()
+    {
+        if (isGameOver && Input.GetMouseButtonDown(0))
+        {
+            //Debug.Log("Dead zmiana sceny");
+            gameOverPanel.SetActive(false);
+
+            SceneManager.LoadScene(0);
+        }
+    }
     private void OnEnable()
     {
         gameEventToSubscribe.RegisterListener(this);
@@ -93,12 +103,7 @@ public class BaseGameListener2 : MonoBehaviour, IGameEventListener
 
     private void OnMouseDown()
     {
-        if (isGameOver)
-        {
-            gameOverPanel.SetActive(false);
-
-            SceneManager.LoadScene(0);
-        }
+        
     }
 
 }
