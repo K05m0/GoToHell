@@ -3,7 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class FE_movement : PlayerMovement
+public class FE_movement : MonoBehaviour
 {
     public float DMG;
     public GameObject player;
@@ -17,13 +17,5 @@ public class FE_movement : PlayerMovement
     {
         
     }
-    private void OnCollisionEnter(Collision collision)
-    {
-        if (collision.gameObject.tag == "Player")
-        {
-            HP = HP - DMG;
-            Demage();
-            Debug.Log(HP);
-        }
-    }
+    
 }

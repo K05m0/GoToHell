@@ -9,6 +9,7 @@ TagManager:
   - Bullet
   - Barrier
   - Ground
+  - enemy
   layers:
   - Default
   - TransparentFX
