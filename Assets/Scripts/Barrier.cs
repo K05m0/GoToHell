@@ -17,6 +17,7 @@ public class Barrier : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+
         float distance = Vector3.Distance(transform.position, Player.transform.position);
 
         //if (distance > 40)

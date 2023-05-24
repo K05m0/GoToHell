@@ -100,10 +100,11 @@ public class BaseGameListener2 : MonoBehaviour, IGameEventListener
         }
 
     }
+    //private IEnumerator killedBarrier() 
+    //{ 
 
-    private void OnMouseDown()
-    {
-        
-    }
+    //}
+
+   
 
 }
