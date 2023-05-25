@@ -8,6 +8,7 @@ using UnityEngine.UI;
 
 public class PlayerMovement : StaminaBar
 {
+    public Vector3Value positionValue;
     public Camera camera2;
     public float tapSpeed = 0.5f;
     private float lastTapTime = 0;
@@ -61,8 +62,8 @@ public class PlayerMovement : StaminaBar
 
     void Update()
     {
-        
 
+        positionValue.position = transform.position;
         
 
 
