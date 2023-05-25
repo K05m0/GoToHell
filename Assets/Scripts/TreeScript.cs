@@ -9,12 +9,22 @@ public class TreeScript : MonoBehaviour
 
     void Start()
     {
+        if (transform.position.x < 0)
+        {
+            float rotation = Random.Range(-100, -80);
+            transform.rotation = Quaternion.Euler(0, 0, rotation);
+        }
+        else
+        {
+            float rotation = Random.Range(100, 80);
+            transform.rotation = Quaternion.Euler(0, 0, rotation);
+        }
+
+        float scale = Random.Range(1, 2);
+        transform.localScale = Vector3.one * scale;
 
 
 
-
-        float rotation = Random.Range(-15, 15);
-        transform.rotation = Quaternion.Euler(0, 0, rotation);
     }
 
 

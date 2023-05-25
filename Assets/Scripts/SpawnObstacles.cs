@@ -8,7 +8,7 @@ public class SpawnObstacles : PlayerMovement
     private float startDistance = 10;
     private float yDistance = 5;
     private float WebDistance = 25;
-    private float TreeDistance = 20;
+    private float TreeDistance = 8;
     private float minSpread = 5;
     private float maxSpread = 10;
     private float spawnTreshold = -10;
@@ -45,10 +45,22 @@ public class SpawnObstacles : PlayerMovement
     {
         if (lastYPositionTree - playerTransform.position.y > TreeDistance)
         {
-            float WebPosx = Random.Range(3, -4);
-            float webPosZ = Random.Range(24, 7);
-            Instantiate(TreePrefab, new Vector3(WebPosx, playerTransform.position.y - ySpread, webPosZ), Quaternion.identity);
-            lastYPositionTree = playerTransform.position.y;
+            float side = Random.Range(0, 10);
+            if (side <= 5)
+            {
+                float TreePosx = Random.Range(-12, -17);
+                float TreePosZ = Random.Range(-7, -13);
+                Instantiate(TreePrefab, new Vector3(TreePosx, playerTransform.position.y - ySpread, TreePosZ), Quaternion.identity);
+                lastYPositionTree = playerTransform.position.y;
+            }
+            else
+            {
+                float TreePosx = Random.Range(10, 16);
+                float TreePosZ = Random.Range(-7, -13);
+                Instantiate(TreePrefab, new Vector3(TreePosx, playerTransform.position.y - ySpread, TreePosZ), Quaternion.identity);
+                lastYPositionTree = playerTransform.position.y;
+            }
+            
         }
 
 
