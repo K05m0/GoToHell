@@ -30,10 +30,10 @@ public class CamFollowsPlayer : MonoBehaviour
 
     private void Update()
     {
-        if (target.transform.position.y < -200)
-        {
-            transform.Translate(0, 170, 0);
-        }
+        //if (target.transform.position.y < -200)
+        //{
+        //    transform.Translate(0, 170, 0);
+        //}
     }
 }
 

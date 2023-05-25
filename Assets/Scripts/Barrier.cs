@@ -5,7 +5,7 @@ using UnityEngine;
 
 public class Barrier : MonoBehaviour
 {
-    private Transform Player;
+    
     
     public float health;
 
