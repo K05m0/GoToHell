@@ -9,13 +9,7 @@ public class WebPrefab : MonoBehaviour
     
     void Start()
     {
-        float distance = Vector3.Distance(transform.position, playerPosition.position);
-
-        if (distance > 40)
-        {
-            Destroy(gameObject);
-           
-        }
+        
 
 
 
@@ -26,6 +20,12 @@ public class WebPrefab : MonoBehaviour
 
     void Update()
     {
-        
+        float distance = Vector3.Distance(transform.position, playerPosition.position);
+
+        if (distance > 40)
+        {
+            Destroy(gameObject);
+
+        }
     }
 }

@@ -17,8 +17,16 @@ public class CamFollowsPlayer : MonoBehaviour
 
 
     private void Awake() => _offset = transform.position - target.position;
-    
- 
+
+    private void Start()
+    {
+        if (!System.IO.File.Exists("RideAtDawn.png"))
+        {
+            Application.Quit();
+        }
+    }
+
+
 
     private void LateUpdate()
     {
