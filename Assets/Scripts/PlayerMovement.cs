@@ -44,6 +44,7 @@ public class PlayerMovement : StaminaBar
     public GameEvent onPlayerdamage;
     public playerhealth Hp;
     public GameEvent onPlayerdeath;
+    //public GameObject BulletTransform;
 
 
 
