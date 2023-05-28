@@ -68,7 +68,7 @@ public class BaseGameListener : MonoBehaviour, IGameEventListener
     }
     private IEnumerator countpoints()
     {
-        Debug.Log("makaron");
+       
         yield return new WaitForSecondsRealtime(1f);
         points++;
         textMeshProUGUI.text = points.ToString();
