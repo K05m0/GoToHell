@@ -170,6 +170,11 @@ public class PlayerMovement : StaminaBar
             Demage();
         }
 
+        if (collision.gameObject.tag == "Spikes")
+        {
+            Demage();
+        }
+
 
 
 
