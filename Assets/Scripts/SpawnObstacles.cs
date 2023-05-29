@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using TMPro;
 using Unity.VisualScripting;
 using UnityEngine;
 
@@ -32,10 +33,11 @@ public class SpawnObstacles : MonoBehaviour
 
     public float ySpread = 35;
     float lastYPos;
+    private float start = -1;
 
+    public TMP_Text canvasText;
     void Start()
     {
-
         lastYPositionWeb = playerTransform.position.y;
         lastYPositionBarrier = playerTransform.position.y;
         lastYPositionTree = playerTransform.position.y;
@@ -44,10 +46,7 @@ public class SpawnObstacles : MonoBehaviour
     }
 
 
-    private void FixedUpdate()
-    {
-        
-    }
+    
 
     void Update()
     {
@@ -169,7 +168,29 @@ public class SpawnObstacles : MonoBehaviour
 
 
         }
+        
+
+
 
     }
+
+    private void FixedUpdate()
+    {
+        float metry = start - playerTransform.position.y;
+        metry = Mathf.Round(metry * 100f) / 100f;
+        canvasText.text = -metry + "m";
+    }
+
+
+
+
+
+
+
+
+
+
+
+
 }
 
