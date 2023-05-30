@@ -151,6 +151,7 @@ public class PlayerMovement : StaminaBar
 
     private void PlayerJump()
     {
+        rb.velocity = new Vector3(rb.velocity.x, 0f, rb.velocity.z); // Reset vertical velocity to 0
         Vector3 jumpVector = new Vector3(0, JumpForce, 0);
         rb.AddForce(jumpVector);
         StaminaBar.instance.UseStamina(JumpCost);
