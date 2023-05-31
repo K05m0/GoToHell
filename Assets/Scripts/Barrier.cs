@@ -5,25 +5,34 @@ using UnityEngine;
 
 public class Barrier : MonoBehaviour
 {
-    private Transform Player;
+    
     
     public float health;
+
+    public Vector3Value playerPosition;
     // Start is called before the first frame update
     void Start()
     {
-        Player = GameObject.Find("Player").transform;
+       int side = Random.Range(0, 2);
+       
+       if (side == 0)
+        {
+            
+            transform.rotation = Quaternion.Euler(0, 180, 0);
+        }
     }
 
     // Update is called once per frame
     void Update()
     {
-        float distance = Vector3.Distance(transform.position, Player.transform.position);
 
-        //if (distance > 40)
-        //{
-        //    Destroy(gameObject);
-        //   idk ale wywala errory tak¿e zostaje w //
-        //}
+        float distance = Vector3.Distance(transform.position, playerPosition.position);
+
+        if (distance > 40)
+        {
+            Destroy(gameObject);
+            //idk ale wywala errory tak¿e zostaje w //
+        }
 
 
         if (health <= 0)

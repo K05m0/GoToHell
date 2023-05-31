@@ -8,6 +8,7 @@ using UnityEngine.UI;
 
 public class PlayerMovement : StaminaBar
 {
+    public Vector3Value positionValue;
     public Camera camera2;
     public float tapSpeed = 0.5f;
     private float lastTapTime = 0;
@@ -43,6 +44,7 @@ public class PlayerMovement : StaminaBar
     public GameEvent onPlayerdamage;
     public playerhealth Hp;
     public GameEvent onPlayerdeath;
+    //public GameObject BulletTransform;
 
 
 
@@ -61,8 +63,8 @@ public class PlayerMovement : StaminaBar
 
     void Update()
     {
-        
 
+        positionValue.position = transform.position;
         
 
 
@@ -149,6 +151,7 @@ public class PlayerMovement : StaminaBar
 
     private void PlayerJump()
     {
+        rb.velocity = new Vector3(rb.velocity.x, 0f, rb.velocity.z); // Reset vertical velocity to 0
         Vector3 jumpVector = new Vector3(0, JumpForce, 0);
         rb.AddForce(jumpVector);
         StaminaBar.instance.UseStamina(JumpCost);
@@ -164,6 +167,11 @@ public class PlayerMovement : StaminaBar
 
 
         if (collision.gameObject.tag == "enemy")
+        {
+            Demage();
+        }
+
+        if (collision.gameObject.tag == "Spikes")
         {
             Demage();
         }

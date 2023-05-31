@@ -5,16 +5,27 @@ using static UnityEngine.GraphicsBuffer;
 
 public class WebPrefab : MonoBehaviour
 {
-    // Start is called before the first frame update
+    public Vector3Value playerPosition;
+    
     void Start()
     {
+        
+
+
+
         float rotation = Random.Range(1, 360);
         transform.rotation = Quaternion.Euler(0, 0, rotation);
     }
 
-    // Update is called once per frame
+
     void Update()
     {
-        
+        float distance = Vector3.Distance(transform.position, playerPosition.position);
+
+        if (distance > 40)
+        {
+            Destroy(gameObject);
+
+        }
     }
 }
