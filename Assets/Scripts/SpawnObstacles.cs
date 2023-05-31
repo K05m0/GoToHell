@@ -160,7 +160,7 @@ public class SpawnObstacles : MonoBehaviour
         {
             if (lastYPositionBarrier - playerTransform.position.y > yDistance)
             {
-                float lanePos = Random.Range(-7, 7);
+                float lanePos = Random.Range(-14, 14);
                 Instantiate(obstaclePrefab, new Vector3(lanePos, playerTransform.position.y - ySpread, 0), Quaternion.identity);
                 lastYPositionBarrier = playerTransform.position.y;
                 Debug.Log("Barrier");
