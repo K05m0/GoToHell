@@ -21,6 +21,7 @@ public class PlayerMovement : StaminaBar
     public int DashCost;
     public int JumpCost;
     public float HP = 3;
+    public int ammoCount = 5;
 
 
     [SerializeField] private Transform PlayerCamera;
@@ -121,10 +122,11 @@ public class PlayerMovement : StaminaBar
     
 
 
-        if (Input.GetMouseButton(0) && canFire)
+        if (Input.GetMouseButton(0) && canFire && ammoCount > 0)
         {
             canFire = false;
             Instantiate(bullet, bulletTransform.position, Quaternion.identity);
+            ammoCount--;
         }
 
 
