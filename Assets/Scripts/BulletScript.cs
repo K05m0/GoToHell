@@ -1,6 +1,5 @@
 using System.Collections;
 using System.Collections.Generic;
-using TMPro;
 using UnityEngine;
 
 public class BulletScript : MonoBehaviour
@@ -8,51 +7,41 @@ public class BulletScript : MonoBehaviour
     private Rigidbody rb;
     public float force;
 
-    public PlayerMovement playerMovement;
-    public GameObject playerObject;
+    private PlayerMovement playerMovement;
 
-
-    void Start()
+    private void Start()
     {
-        playerObject = GameObject.FindGameObjectWithTag("Player");
-        playerMovement = playerObject.GetComponent<PlayerMovement>();
-
-        GetComponent<Rigidbody>();
         rb = GetComponent<Rigidbody>();
         rb.AddRelativeForce((GameObject.FindGameObjectWithTag("BulletTransform").transform.position - transform.position) * force, ForceMode.VelocityChange);
-        //Debug.Log((GameObject.FindGameObjectWithTag("BulletTransform").transform.position - transform.position) * force);
 
-       
+        playerMovement = FindObjectOfType<PlayerMovement>();
 
+        Vector3 kickbackDirection = -transform.forward; // Adjust the kickback direction as needed
+        playerMovement.ApplyKickbackForce(kickbackDirection * playerMovement.kickbackForce);
     }
 
-    // Update is called once per frame
-    void Update()
+    private void Update()
     {
         float destructionTime = 9999;
         Destroy(gameObject, destructionTime);
-
-
     }
 
-    void OnTriggerEnter(Collider collision)
+    private void OnTriggerEnter(Collider collision)
     {
-        
         if (collision.gameObject.CompareTag("Player"))
         {
             playerMovement.ammoCount++;
             Debug.Log("Ammo Count: " + playerMovement.ammoCount);
-            Destroy(gameObject);
+           // Destroy(gameObject);
         }
-        
-        
-        if (collision.gameObject.tag != "Player" && collision.gameObject.tag != "enemy")
+        else if (collision.gameObject.CompareTag("Bullet")) // Check collision with other bullets
+        {
+            Physics.IgnoreCollision(collision.gameObject.GetComponent<Collider>(), GetComponent<Collider>());
+        }
+        else
         {
             rb.velocity = Vector3.zero;
             rb.angularVelocity = Vector3.zero;
         }
-        
     }
 }
-
-

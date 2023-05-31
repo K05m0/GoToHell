@@ -5,7 +5,6 @@ using UnityEditor.Rendering;
 using UnityEngine;
 using UnityEngine.UI;
 
-
 public class PlayerMovement : StaminaBar
 {
     public Vector3Value positionValue;
@@ -21,8 +20,7 @@ public class PlayerMovement : StaminaBar
     public int DashCost;
     public int JumpCost;
     public float HP = 3;
-    public int ammoCount = 5;
-
+    public int ammoCount = 999;
 
     [SerializeField] private Transform PlayerCamera;
     [SerializeField] private Rigidbody PlayerBody;
@@ -33,21 +31,17 @@ public class PlayerMovement : StaminaBar
     [SerializeField] private float Velocity;
 
     [SerializeField] private float wallride;
+    [SerializeField] public float kickbackForce;
 
-    
     public GameObject bullet;
     public Transform bulletTransform;
     public bool canFire;
     private float timer;
     public float timeBetweenFiring;
 
-
     public GameEvent onPlayerdamage;
     public playerhealth Hp;
     public GameEvent onPlayerdeath;
-    //public GameObject BulletTransform;
-
-
 
     private void Start()
     {
@@ -58,21 +52,12 @@ public class PlayerMovement : StaminaBar
     private void Awake()
     {
         rb = GetComponent<Rigidbody>();
-
     }
-  
 
-    void Update()
+    private void Update()
     {
-
         positionValue.position = transform.position;
-        
-
-
-
         Vector2 positionOnScreen = (Vector2)Camera.main.WorldToViewportPoint(transform.position);
-        
-
         Vector2 mouseOnScreen = (Vector2)camera2.ScreenToViewportPoint(Input.mousePosition);
         Vector2 mouseOnScreenScaled = positionOnScreen - mouseOnScreen;
 
@@ -80,34 +65,11 @@ public class PlayerMovement : StaminaBar
         {
             if ((Time.time - lastTapTime) < tapSpeed && staminaBar.value >= DashCost)
             {
-               
-                    //Debug.Log("DoubleTap Q");
-                   // PlayerBody.AddForce(-mouseOnScreenScaled * DashForce, ForceMode.Impulse);
                 PlayerBody.AddRelativeForce((GameObject.FindGameObjectWithTag("BulletTransform").transform.position - transform.position) * DashForce, ForceMode.VelocityChange);
                 StaminaBar.instance.UseStamina(DashCost);
-              
-               
             }
             lastTapTime = Time.time;
         }
-        /*
-        Debug.DrawLine(positionOnScreen, mouseOnScreen, Color.green);
-        Debug.DrawLine(-positionOnScreen, -mouseOnScreen, Color.red);
-        Debug.DrawLine(-positionOnScreen, -mouseOnScreenScaled, Color.white);
-        Debug.DrawLine(-mouseOnScreenScaled, new Vector3(0, 0), Color.black); */
-        //  Debug.Log("mouseOnScreen :" + mouseOnScreen + ", Scaled: " + mouseOnScreenScaled  + " positionOnScreen :" + positionOnScreen);
-        //  Debug.Log("ScaleFactor = " + canvas.scaleFactor);
-
-        //if (transform.position.y < -200)
-        //{
-        //    transform.Translate(0, 170, 0);
-        //    rb.AddForce(Vector3.down * 2);
-        //    lastYPosition = transform.position.y;
-        //    // Debug.Log("lastYPosition PlayerMovement : " + lastYPosition);
-
-        //}
-
-
 
         if (!canFire)
         {
@@ -119,36 +81,33 @@ public class PlayerMovement : StaminaBar
             }
         }
 
-    
-
-
         if (Input.GetMouseButton(0) && canFire && ammoCount > 0)
         {
             canFire = false;
             Instantiate(bullet, bulletTransform.position, Quaternion.identity);
             ammoCount--;
-        }
 
+            Vector3 kickbackDirection = -transform.forward; // Adjust the kickback direction as needed
+            ApplyKickbackForce(kickbackDirection * kickbackForce);
+        }
 
         horizontal = Input.GetAxis("Horizontal");
         rb.velocity = new Vector2(horizontal * Speed, rb.velocity.y);
-
-
 
         if (Input.GetKeyDown(KeyCode.Space) && staminaBar.value >= JumpCost)
         {
             PlayerJump();
         }
 
-        //Debug.Log(rb.velocity.magnitude);
         if (rb.velocity.magnitude > maxSpeed)
         {
             rb.velocity = Vector3.ClampMagnitude(rb.velocity, maxSpeed);
-            //Debug.Log(rb.velocity);
         }
-        
+    }
 
-
+    public void ApplyKickbackForce(Vector3 force)
+    {
+        rb.AddForce(force, ForceMode.Impulse);
     }
 
     private void PlayerJump()
@@ -157,16 +116,14 @@ public class PlayerMovement : StaminaBar
         Vector3 jumpVector = new Vector3(0, JumpForce, 0);
         rb.AddForce(jumpVector);
         StaminaBar.instance.UseStamina(JumpCost);
-
-
     }
-    void OnTriggerEnter(Collider collision)
+
+    private void OnTriggerEnter(Collider collision)
     {
         if (collision.gameObject.tag == "floor")
         {
             rb.velocity = Vector3.down * wallride;
         }
-
 
         if (collision.gameObject.tag == "enemy")
         {
@@ -177,12 +134,7 @@ public class PlayerMovement : StaminaBar
         {
             Demage();
         }
-
-
-
-
     }
-
 
     public void Demage()
     {
@@ -191,4 +143,4 @@ public class PlayerMovement : StaminaBar
             onPlayerdamage.Fire();
         camera2.transform.DOShakePosition(1f);
     }
-    }
+}
