@@ -5,7 +5,7 @@ using UnityEngine;
 
 public class WallEnemy : MonoBehaviour
 {
-    public Vector3Value target;
+    public Vector3Value playerPosition;
     private Vector3 startPosition;
     public int health = 1;
 
@@ -35,15 +35,15 @@ public class WallEnemy : MonoBehaviour
             Destroy(gameObject);
         }
 
-        // transform.position = new Vector3(startPosition.x, target.position.y, startPosition.z) * step;
-        // transform.Translate = (new Vector3(0, target.position.y, 0) * step);
-        // transform.DOMoveZ
-        //Debug.Log(target.position.y);
+        float distance = Vector3.Distance(transform.position, playerPosition.position);
+
+        if (distance > 40)
+        {
+            Destroy(gameObject);
+
+        }
+
+
     }
-
-
-    //Debug.Log(target.position);
-    //Debug.DrawLine(target.position, startPosition);
-    //transform.Translate(target.position * Time.deltaTime);
 }
 

@@ -111,8 +111,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: adfd7de4a3234394e9c76e9544465ffb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  health: 1
   DMG: 1
-  player: {fileID: 0}
+  playerPosition: {fileID: 11400000, guid: e9ddba60addb2444887afbf2d7be738b, type: 2}
 --- !u!54 &6420784676047129154
 Rigidbody:
   m_ObjectHideFlags: 0

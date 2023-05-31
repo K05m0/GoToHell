@@ -66,7 +66,7 @@ public class BaseGameListener2 : MonoBehaviour, IGameEventListener
 
         }
         hp.value = 3;
-        textMeshProUGUI.text = points.ToString();
+        //textMeshProUGUI.text = points.ToString();
     }
     private void OnCollisionExit(Collision collision)
     {
@@ -81,7 +81,7 @@ public class BaseGameListener2 : MonoBehaviour, IGameEventListener
     {
         yield return new WaitForSecondsRealtime(1f);
         points++;
-        textMeshProUGUI.text = points.ToString();
+        //textMeshProUGUI.text = points.ToString();
     }
     private IEnumerator MakeRedForOneSecond()
     {

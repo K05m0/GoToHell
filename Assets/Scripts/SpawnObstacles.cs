@@ -7,11 +7,11 @@ using UnityEngine;
 public class SpawnObstacles : MonoBehaviour
 {
     public float startDistance = 10;
-    public float yDistance = 5;
+    public float yDistance = 15;
     public float WebDistance = 25;
     public float TreeDistance = 8;
-    public float WallDistance = 35;
-    public float FlyingDistance = 25;
+    public float WallDistance = 15;
+    public float FlyingDistance = 20;
     public float minSpread = 5;
     public float maxSpread = 10;
     public float spawnTreshold = -10;
@@ -22,6 +22,21 @@ public class SpawnObstacles : MonoBehaviour
     private float lastYPositionFlying;
     private float lastYPositionWall;
 
+    private float xWallR = 15;
+    private float zWallR = -7;
+
+
+    private float xWallL = -16;
+    private float zWallL = -6;
+
+    private float xWallBack = -0.5f;
+    private float zWallBack = -5.2f;
+
+    private float wallTreshold = -200;
+
+
+
+
 
 
     public Transform playerTransform;
@@ -30,6 +45,9 @@ public class SpawnObstacles : MonoBehaviour
     public Transform TreePrefab;
     public Transform FlyingEnemy;
     public Transform WallEnemy;
+    public Transform Wall_L;
+    public Transform Wall_R;
+    public Transform Wall_Back;
 
     public float ySpread = 35;
     float lastYPos;
@@ -50,6 +68,22 @@ public class SpawnObstacles : MonoBehaviour
 
     void Update()
     {
+        if (playerTransform.position.y < wallTreshold)
+        {
+            Instantiate(Wall_L, new Vector3(xWallL, playerTransform.position.y - 203, zWallL), Quaternion.identity);
+            Instantiate(Wall_R, new Vector3(xWallR, playerTransform.position.y - 203, zWallR), Quaternion.identity);
+            Instantiate(Wall_Back, new Vector3(xWallBack, playerTransform.position.y - 220, zWallBack), Quaternion.identity);
+            wallTreshold = wallTreshold - 150;
+
+        }
+
+
+
+
+
+
+
+
         if (lastYPositionWall - playerTransform.position.y > WallDistance)
         {
             float side = Random.Range(0, 10);
@@ -121,7 +155,7 @@ public class SpawnObstacles : MonoBehaviour
             else
             {
                 float TreePosx = Random.Range(10, 16);
-                float TreePosZ = Random.Range(-7, -13);
+                float TreePosZ = Random.Range(-11, -14);
                 Instantiate(TreePrefab, new Vector3(TreePosx, playerTransform.position.y - ySpread, TreePosZ), Quaternion.identity);
                 lastYPositionTree = playerTransform.position.y;
                 return;
@@ -145,18 +179,16 @@ public class SpawnObstacles : MonoBehaviour
 
 
 
-        // Ta Teleportacja na góre odbywaæ sie bedzie przy sklepikarzu, bedzie ³atwiej 
+       
         if (playerTransform.position.y < spawnTreshold)
         {
-            //Debug.Log("1");
-            //Debug.Log("lastYPosition :" + lastYPosition + " playerTransform.position.y :" + playerTransform.position.y + " yDistance :" + yDistance);
             
             
             if (lastYPositionBarrier - playerTransform.position.y > yDistance)
             {
-                //Debug.Log("2");
+                
                 float lanePos = Random.Range(-7, 7);
-               // ySpread = Random.Range(minSpread, maxSpread);
+               
 
                 Instantiate(obstaclePrefab, new Vector3(lanePos, playerTransform.position.y - ySpread, 0), Quaternion.identity);
 
