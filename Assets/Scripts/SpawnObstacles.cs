@@ -77,13 +77,6 @@ public class SpawnObstacles : MonoBehaviour
 
         }
 
-
-
-
-
-
-
-
         if (lastYPositionWall - playerTransform.position.y > WallDistance)
         {
             float side = Random.Range(0, 10);
@@ -129,25 +122,13 @@ public class SpawnObstacles : MonoBehaviour
 
 
 
-
-
-
-
-
-
-
-
-
-
-
-
         if (lastYPositionTree - playerTransform.position.y > TreeDistance)
         {
             float side = Random.Range(0, 10);
             if (side <= 5)
             {
                 float TreePosx = Random.Range(-12, -17);
-                float TreePosZ = Random.Range(-7, -13);
+                float TreePosZ = Random.Range(-11, -13);
                 Instantiate(TreePrefab, new Vector3(TreePosx, playerTransform.position.y - ySpread, TreePosZ), Quaternion.identity);
                 lastYPositionTree = playerTransform.position.y;
                 return;
@@ -164,15 +145,10 @@ public class SpawnObstacles : MonoBehaviour
         }
 
 
-
-
-
-
-
             if (lastYPositionWeb - playerTransform.position.y > WebDistance)
         {
             float WebPosx = Random.Range(3, -4);
-            float webPosZ = Random.Range(24, 7);
+            float webPosZ = Random.Range(4, 11);
             Instantiate(webPrefab, new Vector3(WebPosx, playerTransform.position.y - ySpread, webPosZ), Quaternion.identity);
             lastYPositionWeb = playerTransform.position.y;
         }
@@ -182,20 +158,12 @@ public class SpawnObstacles : MonoBehaviour
        
         if (playerTransform.position.y < spawnTreshold)
         {
-            
-            
             if (lastYPositionBarrier - playerTransform.position.y > yDistance)
             {
-                
                 float lanePos = Random.Range(-7, 7);
-               
-
                 Instantiate(obstaclePrefab, new Vector3(lanePos, playerTransform.position.y - ySpread, 0), Quaternion.identity);
-
-
-
-
                 lastYPositionBarrier = playerTransform.position.y;
+                Debug.Log("Barrier");
             }
 
 
