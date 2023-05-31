@@ -41,12 +41,12 @@ public class Barrier : MonoBehaviour
         }
     }
 
-  //  void OnTriggerEnter(Collider collision)
- //   {
-  //      if (collision.gameObject.tag == "Bullet")
-  //      {
- //           health--;
-            
- //       }
- //   }
+    void OnTriggerEnter(Collider collision)
+    {
+        if (collision.gameObject.tag == "Bullet")
+        {
+            health--;
+
+        }
+    }
 }

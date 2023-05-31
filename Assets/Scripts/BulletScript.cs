@@ -6,6 +6,7 @@ public class BulletScript : MonoBehaviour
 {
     private Rigidbody rb;
     public float force;
+    float destructionTime = 5;
 
     private PlayerMovement playerMovement;
 
@@ -22,7 +23,7 @@ public class BulletScript : MonoBehaviour
 
     private void Update()
     {
-        float destructionTime = 9999;
+        
         Destroy(gameObject, destructionTime);
     }
 
