@@ -32,7 +32,11 @@ public class BulletScript : MonoBehaviour
 
     void OnTriggerEnter(Collider collision)
     {
-        
+        if (collision.gameObject.tag != "Player")
+        {
+            rb.velocity = Vector3.zero;
+            rb.angularVelocity = Vector3.zero;
+        }
         
     }
 }
