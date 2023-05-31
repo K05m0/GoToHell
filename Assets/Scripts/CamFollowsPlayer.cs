@@ -10,7 +10,7 @@ public class CamFollowsPlayer : MonoBehaviour
 
     private Vector3 _offset;
     [SerializeField] private Transform target;
-    [SerializeField] private float smoothTime;
+    [SerializeField] public float smoothTime;
     private Vector3 _currentVelocity = Vector3.zero;
     private Vector3 targetPosition;
 
