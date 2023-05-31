@@ -32,11 +32,8 @@ public class BulletScript : MonoBehaviour
 
     void OnTriggerEnter(Collider collision)
     {
-        if (collision.gameObject.tag == "Barrier")
-        {
-           Destroy(gameObject);
-
-        }
+        
+        
     }
 }
 

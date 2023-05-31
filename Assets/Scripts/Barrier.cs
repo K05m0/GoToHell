@@ -40,12 +40,13 @@ public class Barrier : MonoBehaviour
             Destroy(gameObject);
         }
     }
-    void OnTriggerEnter(Collider collision)
-    {
-        if (collision.gameObject.tag == "Bullet")
-        {
-            health--;
+
+  //  void OnTriggerEnter(Collider collision)
+ //   {
+  //      if (collision.gameObject.tag == "Bullet")
+  //      {
+ //           health--;
             
-        }
-    }
+ //       }
+ //   }
 }
