@@ -6,15 +6,15 @@ using UnityEngine;
 
 public class SpawnObstacles : MonoBehaviour
 {
-    private float startDistance = 10;
-    private float yDistance = 5;
-    private float WebDistance = 25;
-    private float TreeDistance = 8;
-    private float WallDistance = 35;
-    private float FlyingDistance = 25;
-    private float minSpread = 5;
-    private float maxSpread = 10;
-    private float spawnTreshold = -10;
+    public float startDistance = 10;
+    public float yDistance = 5;
+    public float WebDistance = 25;
+    public float TreeDistance = 8;
+    public float WallDistance = 35;
+    public float FlyingDistance = 25;
+    public float minSpread = 5;
+    public float maxSpread = 10;
+    public float spawnTreshold = -10;
 
     private float lastYPositionWeb;
     private float lastYPositionBarrier;

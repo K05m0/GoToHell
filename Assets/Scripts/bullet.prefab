@@ -101,7 +101,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 37c22dc45a759d841a1b8287b6f635d1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  force: 80
+  force: 110
 --- !u!54 &1787447693399894540
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -151,6 +151,46 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 4056156980236662176}
     m_Modifications:
+    - target: {fileID: 3754107149108276666, guid: 3efd4dfc4d25d054a8a655a95b9562c4, type: 3}
+      propertyPath: looping
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3754107149108276666, guid: 3efd4dfc4d25d054a8a655a95b9562c4, type: 3}
+      propertyPath: lengthInSec
+      value: 8
+      objectReference: {fileID: 0}
+    - target: {fileID: 3754107149108276666, guid: 3efd4dfc4d25d054a8a655a95b9562c4, type: 3}
+      propertyPath: InitialModule.startLifetime.scalar
+      value: 8
+      objectReference: {fileID: 0}
+    - target: {fileID: 3754694725233016384, guid: 3efd4dfc4d25d054a8a655a95b9562c4, type: 3}
+      propertyPath: InitialModule.startSpeed.scalar
+      value: 1.3
+      objectReference: {fileID: 0}
+    - target: {fileID: 3754694725233016384, guid: 3efd4dfc4d25d054a8a655a95b9562c4, type: 3}
+      propertyPath: EmissionModule.rateOverTime.scalar
+      value: 25
+      objectReference: {fileID: 0}
+    - target: {fileID: 3754727848762575714, guid: 3efd4dfc4d25d054a8a655a95b9562c4, type: 3}
+      propertyPath: NoiseModule.enabled
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3754727848762575714, guid: 3efd4dfc4d25d054a8a655a95b9562c4, type: 3}
+      propertyPath: NoiseModule.strength.scalar
+      value: 0.3
+      objectReference: {fileID: 0}
+    - target: {fileID: 3754727848762575714, guid: 3efd4dfc4d25d054a8a655a95b9562c4, type: 3}
+      propertyPath: NoiseModule.scrollSpeed.scalar
+      value: 0.42
+      objectReference: {fileID: 0}
+    - target: {fileID: 3754727848762575714, guid: 3efd4dfc4d25d054a8a655a95b9562c4, type: 3}
+      propertyPath: InitialModule.startSpeed.scalar
+      value: 1.8
+      objectReference: {fileID: 0}
+    - target: {fileID: 3754727848762575714, guid: 3efd4dfc4d25d054a8a655a95b9562c4, type: 3}
+      propertyPath: EmissionModule.rateOverTime.scalar
+      value: 30
+      objectReference: {fileID: 0}
     - target: {fileID: 3948355752979613896, guid: 3efd4dfc4d25d054a8a655a95b9562c4, type: 3}
       propertyPath: m_RootOrder
       value: 0
@@ -206,6 +246,18 @@ PrefabInstance:
     - target: {fileID: 3948355752979613896, guid: 3efd4dfc4d25d054a8a655a95b9562c4, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3951245736260435786, guid: 3efd4dfc4d25d054a8a655a95b9562c4, type: 3}
+      propertyPath: m_LocalScale.x
+      value: 1.0442
+      objectReference: {fileID: 0}
+    - target: {fileID: 3951245736260435786, guid: 3efd4dfc4d25d054a8a655a95b9562c4, type: 3}
+      propertyPath: m_LocalScale.y
+      value: 1.0442
+      objectReference: {fileID: 0}
+    - target: {fileID: 3951245736260435786, guid: 3efd4dfc4d25d054a8a655a95b9562c4, type: 3}
+      propertyPath: m_LocalScale.z
+      value: 1.0442
       objectReference: {fileID: 0}
     - target: {fileID: 3953520800428136828, guid: 3efd4dfc4d25d054a8a655a95b9562c4, type: 3}
       propertyPath: m_IsActive
