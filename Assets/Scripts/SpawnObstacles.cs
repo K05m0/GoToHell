@@ -12,6 +12,7 @@ public class SpawnObstacles : MonoBehaviour
     public float TreeDistance = 8;
     public float WallDistance = 15;
     public float FlyingDistance = 20;
+    public float SpikesDistance = 20;
     public float minSpread = 5;
     public float maxSpread = 10;
     public float spawnTreshold = -10;
@@ -21,6 +22,7 @@ public class SpawnObstacles : MonoBehaviour
     private float lastYPositionTree;
     private float lastYPositionFlying;
     private float lastYPositionWall;
+    private float lastYPositionWallSpikes;
 
     private float xWallR = 15;
     private float zWallR = -7;
@@ -48,6 +50,7 @@ public class SpawnObstacles : MonoBehaviour
     public Transform Wall_L;
     public Transform Wall_R;
     public Transform Wall_Back;
+    public Transform WallSpikes;
 
     public float ySpread = 35;
     float lastYPos;
@@ -61,6 +64,7 @@ public class SpawnObstacles : MonoBehaviour
         lastYPositionTree = playerTransform.position.y;
         lastYPositionFlying = playerTransform.position.y;
         lastYPositionWall = playerTransform.position.y;
+        lastYPositionWallSpikes = playerTransform.position.y;
     }
 
 
@@ -68,6 +72,34 @@ public class SpawnObstacles : MonoBehaviour
 
     void Update()
     {
+        if (lastYPositionWallSpikes - playerTransform.position.y > SpikesDistance)
+        {
+            float side = Random.Range(0, 10);
+            if (side <= 5)
+            {
+                float SpikePosx = -9.6f;
+                float SpikePosZ = 0;
+                Instantiate(WallSpikes, new Vector3(SpikePosx, playerTransform.position.y - ySpread, SpikePosZ), Quaternion.Euler(0, 180, 0));
+                lastYPositionWallSpikes = playerTransform.position.y;
+                return;
+            }
+            else
+            {
+                float SpikePosx = 9;
+                float SpikePosZ = 0;
+                Instantiate(WallSpikes, new Vector3(SpikePosx, playerTransform.position.y - ySpread, SpikePosZ), Quaternion.identity);
+                lastYPositionWallSpikes = playerTransform.position.y;
+                return;
+            }
+        }
+
+
+
+
+
+
+
+
         if (playerTransform.position.y < wallTreshold)
         {
             Instantiate(Wall_L, new Vector3(xWallL, playerTransform.position.y - 203, zWallL), Quaternion.identity);
@@ -128,7 +160,7 @@ public class SpawnObstacles : MonoBehaviour
             if (side <= 5)
             {
                 float TreePosx = Random.Range(-12, -17);
-                float TreePosZ = Random.Range(-11, -13);
+                float TreePosZ = Random.Range(-12, -15);
                 Instantiate(TreePrefab, new Vector3(TreePosx, playerTransform.position.y - ySpread, TreePosZ), Quaternion.identity);
                 lastYPositionTree = playerTransform.position.y;
                 return;
@@ -136,7 +168,7 @@ public class SpawnObstacles : MonoBehaviour
             else
             {
                 float TreePosx = Random.Range(10, 16);
-                float TreePosZ = Random.Range(-11, -14);
+                float TreePosZ = Random.Range(-12, -15);
                 Instantiate(TreePrefab, new Vector3(TreePosx, playerTransform.position.y - ySpread, TreePosZ), Quaternion.identity);
                 lastYPositionTree = playerTransform.position.y;
                 return;
@@ -155,23 +187,14 @@ public class SpawnObstacles : MonoBehaviour
 
 
 
-       
-        if (playerTransform.position.y < spawnTreshold)
+
+        if (lastYPositionBarrier - playerTransform.position.y > yDistance)
         {
-            if (lastYPositionBarrier - playerTransform.position.y > yDistance)
-            {
-                float lanePos = Random.Range(-7, 7);
-                Instantiate(obstaclePrefab, new Vector3(lanePos, playerTransform.position.y - ySpread, 0), Quaternion.identity);
-                lastYPositionBarrier = playerTransform.position.y;
-                Debug.Log("Barrier");
-            }
-
-
+            float BarrierPosx = Random.Range(-15, 15);
+            float BarrierPosZ = 0;
+            Instantiate(obstaclePrefab, new Vector3(BarrierPosx, playerTransform.position.y - ySpread, BarrierPosZ), Quaternion.identity);
+            lastYPositionBarrier = playerTransform.position.y;
         }
-        
-
-
-
     }
 
     private void FixedUpdate()
