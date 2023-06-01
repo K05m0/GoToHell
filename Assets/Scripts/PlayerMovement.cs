@@ -43,10 +43,16 @@ public class PlayerMovement : StaminaBar
     public playerhealth Hp;
     public GameEvent onPlayerdeath;
 
+  
+    public ParticleSystem mainBurst;
+    public ParticleSystem secondaryBurst;
+
     private void Start()
     {
         lastTapTime = 0;
         camera2 = Camera.main;
+        mainBurst.Stop();
+        secondaryBurst.Stop();
     }
 
     private void Awake()
@@ -116,6 +122,13 @@ public class PlayerMovement : StaminaBar
         Vector3 jumpVector = new Vector3(0, JumpForce, 0);
         rb.AddForce(jumpVector);
         StaminaBar.instance.UseStamina(JumpCost);
+
+        ActivateBurst();
+    }
+    private void ActivateBurst()
+    {
+        mainBurst.Play();
+        secondaryBurst.Play();
     }
 
     private void OnTriggerEnter(Collider collision)
