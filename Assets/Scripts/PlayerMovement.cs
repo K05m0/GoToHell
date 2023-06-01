@@ -13,6 +13,8 @@ public class PlayerMovement : StaminaBar
     private float lastTapTime = 0;
 
     public float maxSpeed;
+    public float maxSpeedIncrementRate = 0.1f; // Rate at which the max speed increases per second
+    private float elapsedTime = 0f; // Elapsed time since the start of the game
     public Rigidbody rb;
     private float horizontal;
     public float lastYPosition;
@@ -43,7 +45,6 @@ public class PlayerMovement : StaminaBar
     public playerhealth Hp;
     public GameEvent onPlayerdeath;
 
-  
     public ParticleSystem mainBurst;
     public ParticleSystem secondaryBurst;
 
@@ -62,6 +63,8 @@ public class PlayerMovement : StaminaBar
 
     private void Update()
     {
+        elapsedTime += Time.deltaTime; // Update the elapsed time
+
         positionValue.position = transform.position;
         Vector2 positionOnScreen = (Vector2)Camera.main.WorldToViewportPoint(transform.position);
         Vector2 mouseOnScreen = (Vector2)camera2.ScreenToViewportPoint(Input.mousePosition);
@@ -109,6 +112,10 @@ public class PlayerMovement : StaminaBar
         {
             rb.velocity = Vector3.ClampMagnitude(rb.velocity, maxSpeed);
         }
+
+        // Increase max speed over time
+        maxSpeed = Mathf.Lerp(maxSpeed, maxSpeed + maxSpeedIncrementRate, elapsedTime);
+
     }
 
     public void ApplyKickbackForce(Vector3 force)
@@ -125,6 +132,7 @@ public class PlayerMovement : StaminaBar
 
         ActivateBurst();
     }
+
     private void ActivateBurst()
     {
         mainBurst.Play();

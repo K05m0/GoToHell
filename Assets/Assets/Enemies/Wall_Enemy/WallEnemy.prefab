@@ -44,7 +44,7 @@ MeshFilter:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 4922782599029663372}
-  m_Mesh: {fileID: 10202, guid: 0000000000000000e000000000000000, type: 0}
+  m_Mesh: {fileID: 10207, guid: 0000000000000000e000000000000000, type: 0}
 --- !u!23 &4922782599029663369
 MeshRenderer:
   m_ObjectHideFlags: 0
@@ -125,6 +125,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: StormCloudEffect (1)
       objectReference: {fileID: 0}
+    - target: {fileID: 2950189676689802461, guid: 9aa06dfb3bc742d41aca1db705a70319, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 2953399960236206213, guid: 9aa06dfb3bc742d41aca1db705a70319, type: 3}
       propertyPath: m_RootOrder
       value: 0
@@ -168,6 +172,14 @@ PrefabInstance:
     - target: {fileID: 2953399960236206213, guid: 9aa06dfb3bc742d41aca1db705a70319, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2994068088118704759, guid: 9aa06dfb3bc742d41aca1db705a70319, type: 3}
+      propertyPath: m_BoundingSphereOverride.y
+      value: 33
+      objectReference: {fileID: 0}
+    - target: {fileID: 2994068088118704759, guid: 9aa06dfb3bc742d41aca1db705a70319, type: 3}
+      propertyPath: m_BoundingSphereOverride.z
+      value: 12
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 9aa06dfb3bc742d41aca1db705a70319, type: 3}
@@ -230,6 +242,18 @@ PrefabInstance:
     - target: {fileID: 8375849653478825169, guid: dd6dec01d7d595c44a6fcd71aea70d38, type: 3}
       propertyPath: m_Name
       value: StormCloudEffect
+      objectReference: {fileID: 0}
+    - target: {fileID: 8375849653478825169, guid: dd6dec01d7d595c44a6fcd71aea70d38, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8538856326363851949, guid: dd6dec01d7d595c44a6fcd71aea70d38, type: 3}
+      propertyPath: InitialModule.startSize.scalar
+      value: 0.49
+      objectReference: {fileID: 0}
+    - target: {fileID: 8538856326363851949, guid: dd6dec01d7d595c44a6fcd71aea70d38, type: 3}
+      propertyPath: InitialModule.startSize.minScalar
+      value: 0.31
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: dd6dec01d7d595c44a6fcd71aea70d38, type: 3}
