@@ -95,6 +95,7 @@ public class PlayerMovement : StaminaBar
             canFire = false;
             Instantiate(bullet, bulletTransform.position, Quaternion.identity);
             ammoCount--;
+            Debug.Log("Ammo Count" + ammoCount);
 
             Vector3 kickbackDirection = -transform.forward; // Adjust the kickback direction as needed
             ApplyKickbackForce(kickbackDirection * kickbackForce);

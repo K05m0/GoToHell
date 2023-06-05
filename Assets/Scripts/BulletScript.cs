@@ -43,6 +43,7 @@ public class BulletScript : MonoBehaviour
         {
             rb.velocity = Vector3.zero;
             rb.angularVelocity = Vector3.zero;
+            //Destroy(gameObject);
         }
     }
 }
