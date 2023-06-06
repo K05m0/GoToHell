@@ -8,9 +8,7 @@ using UnityEngine.UI;
 public class PlayerMovement : StaminaBar
 {
     public Vector3Value positionValue;
-    
     public Camera camera2;
-   
 
     public float maxSpeed;
     public float maxSpeedIncrementRate = 0.1f; // Rate at which the max speed increases per second
@@ -30,6 +28,8 @@ public class PlayerMovement : StaminaBar
     [SerializeField] private float DashForce;
     [SerializeField] private float Velocity;
 
+    private Vector3 dashDirection;
+
     public GameObject bullet;
     public Transform bulletTransform;
     public bool canFire;
@@ -45,18 +45,13 @@ public class PlayerMovement : StaminaBar
 
     private void Start()
     {
-       
         camera2 = Camera.main;
         mainBurst.Stop();
         secondaryBurst.Stop();
     }
 
-    
-
     private void Update()
     {
-        elapsedTime += Time.deltaTime; // Update the elapsed time
-
         positionValue.position = transform.position;
         Vector2 positionOnScreen = (Vector2)Camera.main.WorldToViewportPoint(transform.position);
         Vector2 mouseOnScreen = (Vector2)camera2.ScreenToViewportPoint(Input.mousePosition);
@@ -64,13 +59,12 @@ public class PlayerMovement : StaminaBar
 
         if (Input.GetKeyDown(KeyCode.LeftShift))
         {
-            if ( staminaBar.value >= DashCost)
+            if (staminaBar.value >= DashCost)
             {
-                rb.velocity = Vector3.zero;
-                rb.AddRelativeForce((GameObject.FindGameObjectWithTag("BulletTransform").transform.position - transform.position) * DashForce, ForceMode.VelocityChange);
+               rb.velocity = Vector3.zero;
+                DashToMousePosition();
                 StaminaBar.instance.UseStamina(DashCost);
             }
-            
         }
 
         if (!canFire)
@@ -88,9 +82,7 @@ public class PlayerMovement : StaminaBar
             canFire = false;
             Instantiate(bullet, bulletTransform.position, Quaternion.identity);
             ammoCount--;
-            Debug.Log("Ammo Count" + ammoCount);
-
-           
+            Debug.Log("Ammo Count: " + ammoCount);
         }
 
         horizontal = Input.GetAxis("Horizontal");
@@ -108,10 +100,15 @@ public class PlayerMovement : StaminaBar
 
         // Increase max speed over time
         maxSpeed = Mathf.Lerp(maxSpeed, maxSpeed + maxSpeedIncrementRate, elapsedTime);
-
     }
 
- 
+     private void DashToMousePosition()
+     {
+         Vector3 mousePosition = GetMouseWorldPosition();
+         dashDirection = (mousePosition - transform.position).normalized;
+         rb.AddForce(dashDirection * DashForce, ForceMode.VelocityChange);
+     }
+   
 
     private void PlayerJump()
     {
@@ -129,22 +126,22 @@ public class PlayerMovement : StaminaBar
         secondaryBurst.Play();
     }
 
+    private Vector3 GetMouseWorldPosition()
+    {
+        Vector3 mousePosition = Input.mousePosition;
+        mousePosition.z = -camera2.transform.position.z;
+        return camera2.ScreenToWorldPoint(mousePosition);
+    }
+
     private void OnTriggerEnter(Collider collision)
     {
-    
-
-        if (collision.gameObject.tag == "enemy")
+        if (collision.gameObject.tag == "enemy" || collision.gameObject.tag == "Spikes")
         {
-            Demage();
-        }
-
-        if (collision.gameObject.tag == "Spikes")
-        {
-            Demage();
+            Damage();
         }
     }
 
-    public void Demage()
+    private void Damage()
     {
         Hp.value -= 1;
         if (onPlayerdamage != null)
