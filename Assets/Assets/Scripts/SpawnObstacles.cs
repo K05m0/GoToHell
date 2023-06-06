@@ -16,6 +16,7 @@ public class SpawnObstacles : MonoBehaviour
     public float minSpread = 5;
     public float maxSpread = 10;
     public float spawnTreshold = -10;
+    public float BatDistance = 25;
 
     private float lastYPositionWeb;
     private float lastYPositionBarrier;
@@ -23,6 +24,7 @@ public class SpawnObstacles : MonoBehaviour
     private float lastYPositionFlying;
     private float lastYPositionWall;
     private float lastYPositionWallSpikes;
+    private float lastYPositionBat;
 
     private float xWallR = 15;
     private float zWallR = -7;
@@ -51,6 +53,7 @@ public class SpawnObstacles : MonoBehaviour
     public Transform Wall_R;
     public Transform Wall_Back;
     public Transform WallSpikes;
+    public Transform Bat;
 
     public float ySpread = 35;
     float lastYPos;
@@ -59,6 +62,7 @@ public class SpawnObstacles : MonoBehaviour
     public TMP_Text canvasText;
     void Start()
     {
+
         lastYPositionWeb = playerTransform.position.y;
         lastYPositionBarrier = playerTransform.position.y;
         lastYPositionTree = playerTransform.position.y;
@@ -72,6 +76,43 @@ public class SpawnObstacles : MonoBehaviour
 
     void Update()
     {
+        if (lastYPositionBat - playerTransform.position.y > BatDistance)
+        {
+            float side = Random.Range(0, 10);
+            if (side <= 5)
+            {
+                float BatPosx = Random.Range(10, -10);
+                float BatPosZ = 0;
+                Instantiate(Bat, new Vector3(BatPosx, playerTransform.position.y - ySpread, BatPosZ), Quaternion.identity);
+                lastYPositionBat = playerTransform.position.y;
+                return;
+            }
+            else
+            {
+                float BatPosx = Random.Range(10, -10);
+                float BatPosZ = 0;
+                Instantiate(Bat, new Vector3(BatPosx, playerTransform.position.y - ySpread, BatPosZ), Quaternion.identity);
+                lastYPositionBat = playerTransform.position.y;
+                return;
+            }
+        }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
         if (lastYPositionWallSpikes - playerTransform.position.y > SpikesDistance)
         {
             float side = Random.Range(0, 10);

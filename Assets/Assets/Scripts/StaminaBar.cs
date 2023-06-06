@@ -43,7 +43,7 @@ public class StaminaBar : MonoBehaviour
         } 
         else
         {
-            Debug.Log("NOT ENOUGH STAMINA");
+            //Debug.Log("NOT ENOUGH STAMINA");
         }
     }
 
