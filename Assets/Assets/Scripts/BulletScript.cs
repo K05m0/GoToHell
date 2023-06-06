@@ -17,8 +17,8 @@ public class BulletScript : MonoBehaviour
 
         playerMovement = FindObjectOfType<PlayerMovement>();
 
-        Vector3 kickbackDirection = -transform.forward; // Adjust the kickback direction as needed
-        playerMovement.ApplyKickbackForce(kickbackDirection * playerMovement.kickbackForce);
+       // Vector3 kickbackDirection = -transform.forward; // Adjust the kickback direction as needed
+      //  playerMovement.ApplyKickbackForce(kickbackDirection * playerMovement.kickbackForce);
     }
 
     private void Update()
