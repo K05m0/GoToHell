@@ -8,6 +8,7 @@ using UnityEngine.UI;
 public class PlayerMovement : StaminaBar
 {
     public Vector3Value positionValue;
+    
     public Camera camera2;
     public float tapSpeed = 0.5f;
     private float lastTapTime = 0;
@@ -95,6 +96,7 @@ public class PlayerMovement : StaminaBar
             canFire = false;
             Instantiate(bullet, bulletTransform.position, Quaternion.identity);
             ammoCount--;
+            Debug.Log("Ammo Count" + ammoCount);
 
             Vector3 kickbackDirection = -transform.forward; // Adjust the kickback direction as needed
             ApplyKickbackForce(kickbackDirection * kickbackForce);

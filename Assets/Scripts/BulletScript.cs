@@ -9,11 +9,15 @@ public class BulletScript : MonoBehaviour
     float destructionTime = 5;
 
     private PlayerMovement playerMovement;
+    public Vector3Value BulletTransform;
 
     private void Start()
     {
         rb = GetComponent<Rigidbody>();
-        rb.AddRelativeForce((GameObject.FindGameObjectWithTag("BulletTransform").transform.position - transform.position) * force, ForceMode.VelocityChange);
+        //rb.AddRelativeForce((GameObject.FindGameObjectWithTag("BulletTransform").transform.position - transform.position) * force, ForceMode.VelocityChange);
+
+        rb.AddRelativeForce((BulletTransform.position - transform.position) * force, ForceMode.VelocityChange);
+
 
         playerMovement = FindObjectOfType<PlayerMovement>();
 
@@ -43,6 +47,7 @@ public class BulletScript : MonoBehaviour
         {
             rb.velocity = Vector3.zero;
             rb.angularVelocity = Vector3.zero;
+            //Destroy(gameObject);
         }
     }
 }
