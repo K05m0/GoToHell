@@ -19,6 +19,7 @@ public class PlayerMovement : StaminaBar
     public Canvas canvas;
     public int DashCost;
     public int JumpCost;
+    public int ShootingCost;
     public float HP = 3;
     public int ammoCount = 999;
 
@@ -77,11 +78,12 @@ public class PlayerMovement : StaminaBar
             }
         }
 
-        if (Input.GetMouseButton(0) && canFire && ammoCount > 0)
+        if (Input.GetMouseButton(0) && canFire && ammoCount > 0 && staminaBar.value >= DashCost)
         {
             canFire = false;
             Instantiate(bullet, bulletTransform.position, Quaternion.identity);
             ammoCount--;
+            StaminaBar.instance.UseStamina(ShootingCost);
             Debug.Log("Ammo Count: " + ammoCount);
         }
 

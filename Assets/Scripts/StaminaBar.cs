@@ -50,11 +50,11 @@ public class StaminaBar : MonoBehaviour
 
     private IEnumerator RegenStamina()
     {
-        yield return new WaitForSeconds(1);
+        yield return new WaitForSeconds(1.5f);
 
         while(currentStamina < maxStamina)
         {
-            currentStamina += maxStamina / 50;
+            currentStamina += maxStamina / 20;
             staminaBar.value = currentStamina;
             yield return new WaitForSeconds(0.1f);
         }
