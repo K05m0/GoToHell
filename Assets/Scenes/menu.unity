@@ -151,7 +151,7 @@ RectTransform:
   m_GameObject: {fileID: 19756784}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 0.47975934, y: 2.4864182, z: 1.5568}
+  m_LocalScale: {x: 0.3994079, y: 1.9060643, z: 1.1934279}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 100958388}
@@ -161,7 +161,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -387, y: -144}
+  m_AnchoredPosition: {x: -299, y: -144}
   m_SizeDelta: {x: 160, y: 30}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &19756786
@@ -584,7 +584,7 @@ RectTransform:
   m_GameObject: {fileID: 486787066}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1.2781036, y: 2.482744, z: 0.79336566}
+  m_LocalScale: {x: 1.045212, y: 2.0821083, z: 0.66534173}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 165073665}
@@ -592,7 +592,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -308, y: 55}
+  m_AnchoredPosition: {x: -285, y: 49.201}
   m_SizeDelta: {x: 205.9, y: 27.5}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &486787068
@@ -831,7 +831,7 @@ RectTransform:
   m_GameObject: {fileID: 1089482635}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1.5409138, y: 2.2941658, z: 0.86741}
+  m_LocalScale: {x: 1.2922595, y: 1.9239607, z: 0.72743773}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 165073665}
@@ -839,7 +839,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -309.21, y: -16.6}
+  m_AnchoredPosition: {x: -284.06, y: -10.846}
   m_SizeDelta: {x: 160, y: 30}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1089482637
@@ -1172,7 +1172,7 @@ AudioSource:
   OutputAudioMixerGroup: {fileID: 0}
   m_audioClip: {fileID: 8300000, guid: 2d1d9475acaec1643927d1cc85815863, type: 3}
   m_PlayOnAwake: 1
-  m_Volume: 0.238
+  m_Volume: 0.51
   m_Pitch: 1
   Loop: 1
   Mute: 0
