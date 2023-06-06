@@ -197,6 +197,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   force: 110
+  BulletTransform: {fileID: 11400000, guid: 76d434d8d830e6d4ca60fd9cde7c6449, type: 2}
 --- !u!54 &1787447693399894540
 Rigidbody:
   m_ObjectHideFlags: 0

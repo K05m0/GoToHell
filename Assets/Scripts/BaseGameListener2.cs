@@ -12,7 +12,7 @@ public class BaseGameListener2 : MonoBehaviour, IGameEventListener
     public GameEvent gameEventToSubscribe;
     //public UnityEvent response;
     public playerhealth hp;
-    public TextMeshProUGUI textMeshProUGUI;
+    public TextMeshProUGUI text;
     public int points = 0;
     
 
@@ -97,6 +97,8 @@ public class BaseGameListener2 : MonoBehaviour, IGameEventListener
             yield return new WaitForSecondsRealtime(1f);
             gameOverPanel.SetActive(true);
             isGameOver = true;
+            
+           //text.rectTransform.position = new Vector3(1534, 764, -740);
         }
 
     }
