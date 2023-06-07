@@ -24,7 +24,8 @@ public class PlayerMovement : StaminaBar
     private bool isFacingRight = true;
     public float wallSlideMinX;
     public float wallSlideMaxX;
-  
+    private bool isFlying = false;
+
 
     [SerializeField] private SpriteRenderer playerTestSprite;
     [SerializeField] private Transform PlayerCamera;
@@ -62,6 +63,8 @@ public class PlayerMovement : StaminaBar
         Vector2 mouseOnScreen = (Vector2)camera2.ScreenToViewportPoint(Input.mousePosition);
         Vector2 mouseOnScreenScaled = positionOnScreen - mouseOnScreen;
 
+        
+
         if (transform.position.x < wallSlideMinX || transform.position.x > wallSlideMaxX)
         {
             animator.SetBool("IsWallSliding", true);
@@ -70,6 +73,8 @@ public class PlayerMovement : StaminaBar
         {
             animator.SetBool("IsWallSliding", false);
         }
+        
+        animator.SetBool("Flying Up", rb.velocity.y > 0f);
 
         if (Input.GetKeyDown(KeyCode.LeftShift))
         {
@@ -104,6 +109,9 @@ public class PlayerMovement : StaminaBar
         rb.velocity = new Vector2(horizontal * MovingSpeed, rb.velocity.y);
 
         animator.SetFloat("Speed", Mathf.Abs(horizontal));
+        
+        isFlying = rb.velocity.y !=0;
+        animator.SetBool("isFlying", isFlying);
 
         if (horizontal < 0 && !isFacingRight)
         {
@@ -173,8 +181,19 @@ public class PlayerMovement : StaminaBar
        
 
     }
- 
-    
+
+    private bool IsGrounded()
+    {
+        float raycastDistance = 0.2f; // Adjust the distance based on your player's size
+
+        // Cast two raycasts, one downwards and one to the side, to check for ground or walls
+        bool isGrounded = Physics.Raycast(transform.position, Vector3.down, raycastDistance)
+            || Physics.Raycast(transform.position, Vector3.left, raycastDistance)
+            || Physics.Raycast(transform.position, Vector3.right, raycastDistance);
+
+        return isGrounded;
+    }
+
     private void Damage()
     {
         Hp.value -= 1;
