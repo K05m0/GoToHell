@@ -9,7 +9,7 @@ public class ShootingEnemy : MonoBehaviour
 
     private bool playerInRange = false;
     private float lastAttackTime = 0f;
-    private float fireRate = 0.5f; //how many bullets are fired/second
+    private float fireRate = 0.5f;
     private Transform player = null;
 
     void OnTriggerEnter(Collider other)
@@ -23,7 +23,7 @@ public class ShootingEnemy : MonoBehaviour
 
     void OnTriggerExit(Collider other)
     {
-        if (other.tag == "player")
+        if (other.tag == "Player")
         {
             playerInRange = false;
             player = null;
@@ -34,8 +34,7 @@ public class ShootingEnemy : MonoBehaviour
     {
         if (playerInRange)
         {
-            //Rotate the enemy towards the player
-            transform.rotation = Quaternion.LookRotation(player.position - transform.position, transform.up);
+           
 
             if (Time.time - lastAttackTime >= 1f / fireRate)
             {
@@ -43,13 +42,14 @@ public class ShootingEnemy : MonoBehaviour
                 lastAttackTime = Time.time;
             }
         }
+
     }
 
     void shootBullet()
     {
 
         var projectile = Instantiate(bulletPrefab, transform.position, transform.rotation);
-        //Shoot the Bullet in the forward direction of the player
         projectile.velocity = transform.forward * shootSpeed;
     }
+   
 }
