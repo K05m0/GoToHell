@@ -10,6 +10,7 @@ public class PlayerMovement : StaminaBar
     public Vector3Value positionValue;
     public Camera camera2;
 
+    public Animator animator;
     public float maxSpeed;
     public Rigidbody rb;
     private float horizontal;
@@ -89,6 +90,8 @@ public class PlayerMovement : StaminaBar
 
         horizontal = Input.GetAxis("Horizontal");
         rb.velocity = new Vector2(horizontal * MovingSpeed, rb.velocity.y);
+
+        animator.SetFloat("Speed", Mathf.Abs(horizontal));
 
         if (horizontal < 0 && !isFacingRight) // Pressed D, facing right
         {
