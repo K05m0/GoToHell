@@ -11,8 +11,6 @@ public class PlayerMovement : StaminaBar
     public Camera camera2;
 
     public float maxSpeed;
-    public float maxSpeedIncrementRate = 0.1f; // Rate at which the max speed increases per second
-    private float elapsedTime = 0f; // Elapsed time since the start of the game
     public Rigidbody rb;
     private float horizontal;
     public float lastYPosition;
@@ -22,7 +20,9 @@ public class PlayerMovement : StaminaBar
     public int ShootingCost;
     public float HP = 3;
     public int ammoCount = 999;
+    private bool isFacingRight = true; 
 
+    [SerializeField] private SpriteRenderer playerTestSprite;
     [SerializeField] private Transform PlayerCamera;
     [SerializeField] private float MovingSpeed;
     [SerializeField] private float JumpForce;
@@ -62,7 +62,7 @@ public class PlayerMovement : StaminaBar
         {
             if (staminaBar.value >= DashCost)
             {
-               rb.velocity = Vector3.zero;
+                rb.velocity = Vector3.zero;
                 DashToMousePosition();
                 StaminaBar.instance.UseStamina(DashCost);
             }
@@ -90,6 +90,15 @@ public class PlayerMovement : StaminaBar
         horizontal = Input.GetAxis("Horizontal");
         rb.velocity = new Vector2(horizontal * MovingSpeed, rb.velocity.y);
 
+        if (horizontal < 0 && !isFacingRight) // Pressed D, facing right
+        {
+            Flip();
+        }
+        else if (horizontal > 0 && isFacingRight) // Pressed A, facing left
+        {
+            Flip();
+        }
+
         if (Input.GetKeyDown(KeyCode.Space) && staminaBar.value >= JumpCost)
         {
             PlayerJump();
@@ -99,18 +108,23 @@ public class PlayerMovement : StaminaBar
         {
             rb.velocity = Vector3.ClampMagnitude(rb.velocity, maxSpeed);
         }
-
-        // Increase max speed over time
-        maxSpeed = Mathf.Lerp(maxSpeed, maxSpeed + maxSpeedIncrementRate, elapsedTime);
     }
 
-     private void DashToMousePosition()
-     {
-         Vector3 mousePosition = GetMouseWorldPosition();
-         dashDirection = (mousePosition - transform.position).normalized;
-         rb.AddForce(dashDirection * DashForce, ForceMode.VelocityChange);
-     }
-   
+    private void Flip()
+    {
+        isFacingRight = !isFacingRight;
+        Vector3 scale = playerTestSprite.transform.localScale;
+        scale.x *= -1;
+        playerTestSprite.transform.localScale = scale;
+
+    }
+
+    private void DashToMousePosition()
+    {
+        Vector3 mousePosition = GetMouseWorldPosition();
+        dashDirection = (mousePosition - transform.position).normalized;
+        rb.AddForce(dashDirection * DashForce, ForceMode.VelocityChange);
+    }
 
     private void PlayerJump()
     {
