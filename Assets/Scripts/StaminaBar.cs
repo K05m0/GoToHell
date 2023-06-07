@@ -16,12 +16,13 @@ public class StaminaBar : MonoBehaviour
 
     private void Awake()
     {
-        instance = this;
+        
     }
 
 
     void Start()
     {
+        instance = this;
         currentStamina = maxStamina;
         staminaBar.maxValue = maxStamina;
         staminaBar.value = maxStamina;
