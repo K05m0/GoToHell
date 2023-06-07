@@ -11,6 +11,7 @@ TagManager:
   - Ground
   - enemy
   - Spikes
+  - 'Side Wall '
   layers:
   - Default
   - TransparentFX

@@ -21,7 +21,10 @@ public class PlayerMovement : StaminaBar
     public int ShootingCost;
     public float HP = 3;
     public int ammoCount = 999;
-    private bool isFacingRight = true; 
+    private bool isFacingRight = true;
+    public float wallSlideMinX;
+    public float wallSlideMaxX;
+  
 
     [SerializeField] private SpriteRenderer playerTestSprite;
     [SerializeField] private Transform PlayerCamera;
@@ -59,6 +62,15 @@ public class PlayerMovement : StaminaBar
         Vector2 mouseOnScreen = (Vector2)camera2.ScreenToViewportPoint(Input.mousePosition);
         Vector2 mouseOnScreenScaled = positionOnScreen - mouseOnScreen;
 
+        if (transform.position.x < wallSlideMinX || transform.position.x > wallSlideMaxX)
+        {
+            animator.SetBool("IsWallSliding", true);
+        }
+        else
+        {
+            animator.SetBool("IsWallSliding", false);
+        }
+
         if (Input.GetKeyDown(KeyCode.LeftShift))
         {
             if (staminaBar.value >= DashCost)
@@ -93,11 +105,11 @@ public class PlayerMovement : StaminaBar
 
         animator.SetFloat("Speed", Mathf.Abs(horizontal));
 
-        if (horizontal < 0 && !isFacingRight) // Pressed D, facing right
+        if (horizontal < 0 && !isFacingRight)
         {
             Flip();
         }
-        else if (horizontal > 0 && isFacingRight) // Pressed A, facing left
+        else if (horizontal > 0 && isFacingRight)
         {
             Flip();
         }
@@ -111,8 +123,8 @@ public class PlayerMovement : StaminaBar
         {
             rb.velocity = Vector3.ClampMagnitude(rb.velocity, maxSpeed);
         }
-    }
 
+    }
     private void Flip()
     {
         isFacingRight = !isFacingRight;
@@ -158,8 +170,11 @@ public class PlayerMovement : StaminaBar
         {
             Damage();
         }
-    }
+       
 
+    }
+ 
+    
     private void Damage()
     {
         Hp.value -= 1;
