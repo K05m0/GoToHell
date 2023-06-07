@@ -182,17 +182,7 @@ public class PlayerMovement : StaminaBar
 
     }
 
-    private bool IsGrounded()
-    {
-        float raycastDistance = 0.2f; // Adjust the distance based on your player's size
 
-        // Cast two raycasts, one downwards and one to the side, to check for ground or walls
-        bool isGrounded = Physics.Raycast(transform.position, Vector3.down, raycastDistance)
-            || Physics.Raycast(transform.position, Vector3.left, raycastDistance)
-            || Physics.Raycast(transform.position, Vector3.right, raycastDistance);
-
-        return isGrounded;
-    }
 
     private void Damage()
     {

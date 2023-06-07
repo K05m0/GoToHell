@@ -14,7 +14,7 @@ public class BulletScript : MonoBehaviour
     private void Start()
     {
         rb = GetComponent<Rigidbody>();
-        //rb.AddRelativeForce((GameObject.FindGameObjectWithTag("BulletTransform").transform.position - transform.position) * force, ForceMode.VelocityChange);
+
 
         rb.AddRelativeForce((BulletTransform.position - transform.position) * force, ForceMode.VelocityChange);
 
